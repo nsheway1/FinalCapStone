@@ -21,5 +21,39 @@ CREATE TABLE users (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+CREATE TABLE brewery(
+        id serial primary key,
+        name varchar(200) not null,
+        description varchar(500) not null,
+        street_address varchar(200) not null,
+        city varchar(200) not null,
+        state varchar(200) not null,
+        zipcode varchar(15) not null
+);
+
+
+CREATE TABLE beer(
+        id serial primary key,
+        name varchar(200) not null,
+        type varchar(200) not null,
+        description varchar(500) not null,
+        abv decimal(3, 1) not null,
+        brewery_id bigint,
+        
+        constraint fk_brewery_id foreign key (brewery_id) references brewery(id)
+);
+
+INSERT INTO brewery VALUES (default, 'Seventh Son', 'Seventh Son Brewing has been producing exceptional beers at the intersection of 4th & 4th in Columbus’ historic Italian Village since April of 2013.',
+'1101 N. 4th St.', 'Columbus', 'Ohio', '43201');
+INSERT INTO brewery VALUES (default, 'Hoof-Hearted', 'Here at Hoof Hearted Brewing we have been turning tanks like cassette tapes since late 2011. Known throughout the industry for our deft hop-wrangling and nude air guitar prowess, we do everything we can to provide fresh, high-quality (and sometimes hi-test) liquid to help you get the party poppin',
+'850 N 4th St.', 'Columbus', 'Ohio', '43215');
+INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you needing more', '785 Science Blvd.', 'Gahanna', 'Ohio', '43230');
+
+INSERT INTO beer VALUES (default, 'Humulus Nimbus', 'Pale Ale', 'A pale golden ale that is both super crisp and super hop forward with a refreshing mouthfeel and a summer friendly 6% abv. Mosaic & simcoe hops lend tart blueberry and fragrant pine to a pleasingly bitter dandelion finish.',
+6.0, 1);
+INSERT INTO beer VALUES (default, 'Belloq', 'Stout', 'Stout with coffee and vanilla added', 4.2, 2);
+INSERT INTO beer VALUES (default, 'Nikola', 'Vienna Lager', 'This is a Vienna Lager that has moderate malt sweetness. It has a malt character from Vienna and other colored malts. Balanced with a subtle hop and caramel flavor and aroma. Clean, moderately dry finish.',
+5.3, 3);
+
 
 COMMIT TRANSACTION;
