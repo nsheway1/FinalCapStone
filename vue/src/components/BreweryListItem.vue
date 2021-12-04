@@ -1,5 +1,5 @@
 <template>
-  <div class="brewery">
+  <div class="brewerybox">
       <h1>{{brewery.name}}</h1>
       <img :src="require('../img/' + brewery.name + '.jpg')" />
   </div>
@@ -15,11 +15,12 @@ export default {
 </script>
 
 <style>
-.brewery {
+.brewerybox {
   border: 1px black solid;
   border-radius: 10px;
+  
 }
-.brewery img{
+.brewerybox img{
   width: 75%;
   max-height: 100%;
   margin-bottom: 2%;

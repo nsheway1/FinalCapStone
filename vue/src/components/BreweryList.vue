@@ -35,19 +35,24 @@ export default {
 
 <style>
 .brewery-list {
-    margin: auto auto;
-    padding: 20px 20px;
-    display:flex;
-    justify-content:space-between;
-    flex-direction: row-reverse;
-    flex-basis: 25%;
+    
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+    
+
+    
+    
 }
 
 .brewery {
+    
     font-size: 20px;
-    flex-grow: 1;
-    padding: 30px 30px;
-    width: 35%;
+     flex-basis: 29%;
+    
+    
 }
 
 </style>
