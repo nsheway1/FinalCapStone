@@ -7,4 +7,5 @@ import java.util.List;
 public interface BreweryDAO {
 
     public List<Brewery> getAllBreweries();
+    public Brewery getBreweryById(Long id);
 }
