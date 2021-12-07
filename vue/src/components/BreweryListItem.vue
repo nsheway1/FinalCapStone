@@ -2,7 +2,7 @@
 <div>
   <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
-      <h1>{{brewery.name}}</h1>
+      <h1 class="brewery-list-title">{{brewery.name}}</h1>
       <img :src="require('../img/' + brewery.name + '.jpg')" />
   </div>
   </router-link>
@@ -25,8 +25,8 @@ export default {
 }
 
 .brewerybox{
-  border: 1px black solid;
-  border-radius: 10px;
+  border: .1rem black solid;
+  border-radius: 1rem;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   -webkit-transition-duration: 0.3s;
@@ -37,7 +37,11 @@ export default {
   transition-timing-function: ease-out;
   background-color:rgba(251, 170, 27, .5);
   margin-bottom: 10%;
-  box-shadow: .25rem .25rem .25rem rgba(251, 170, 27, .7);
+  box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
+  rgba(251, 170, 27, .3) 10px 10px, 
+  rgba(251, 170, 27, .2) 15px 15px,
+  rgba(251, 170, 27, .1) 20px 20px,
+  rgba(251, 170, 27, .005) 25px 25px;
   
 }
 
@@ -53,8 +57,9 @@ export default {
   margin-bottom: 2%;
 }
 
-h1 {
+.brewery-list-title{
   background-color: rgba(0, 0, 0, .7);
+  font-weight: normal;
 }
 
 @keyframes shake {
