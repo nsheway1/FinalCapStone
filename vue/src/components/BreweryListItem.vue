@@ -35,7 +35,13 @@ export default {
   transition-property: transform;
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
+  background-color:rgba(251, 170, 27, .5);
+  margin-bottom: 10%;
+  box-shadow: .25rem .25rem .25rem rgba(251, 170, 27, .7);
+  
 }
+
+
 
 .brewerybox:hover, .brewerybox:focus, .brewerybox:active {
   -webkit-transform: translateY(-8px);
@@ -45,6 +51,10 @@ export default {
   width: 20rem;
   height: 15rem;
   margin-bottom: 2%;
+}
+
+h1 {
+  background-color: rgba(0, 0, 0, .7);
 }
 
 @keyframes shake {
