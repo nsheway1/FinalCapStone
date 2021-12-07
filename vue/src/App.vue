@@ -4,7 +4,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
-    <router-view />
+    <router-view class="main" />
   </div>
 </template>
 
@@ -15,6 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
+}
+
+html {
+  background: url("../src/img/background.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 </style>
