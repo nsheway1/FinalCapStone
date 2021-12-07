@@ -2,6 +2,8 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
+DROP TABLE IF EXISTS beer;
+DROP TABLE IF EXISTS brewery;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -48,16 +50,18 @@ INSERT INTO brewery VALUES (default, 'Seventh Son', 'Seventh Son Brewing has bee
 INSERT INTO brewery VALUES (default, 'Hoof-Hearted', 'Here at Hoof Hearted Brewing we have been turning tanks like cassette tapes since late 2011. Known throughout the industry for our deft hop-wrangling and nude air guitar prowess, we do everything we can to provide fresh, high-quality (and sometimes hi-test) liquid to help you get the party poppin',
 '850 N 4th St.', 'Columbus', 'Ohio', '43215');
 INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you needing more', '785 Science Blvd.', 'Gahanna', 'Ohio', '43230');
+INSERT INTO brewery VALUES (default, 'Nostalgia', 'Beer that starts a conversation is the essence of Nostalgia Brewing', '81 Mill St', 'Gahanna', 'Ohio', '43230');
+INSERT INTO brewery VALUES (default, 'North High', 'Beer so good they named a street after us', '1288 N High St', 'Columbus', 'Ohio', '43201');
+INSERT INTO brewery VALUES (default, 'Endeavor', 'There is a story behind every beer', '909 W 5th Ave', 'Columbus', 'Ohio', '43212');
 
 INSERT INTO beer VALUES (default, 'Humulus Nimbus', 'Pale Ale', 'A pale golden ale that is both super crisp and super hop forward with a refreshing mouthfeel and a summer friendly 6% abv. Mosaic & simcoe hops lend tart blueberry and fragrant pine to a pleasingly bitter dandelion finish.',
 6.0, 1);
 INSERT INTO beer VALUES (default, 'Belloq', 'Stout', 'Stout with coffee and vanilla added', 4.2, 2);
 INSERT INTO beer VALUES (default, 'Nikola', 'Vienna Lager', 'This is a Vienna Lager that has moderate malt sweetness. It has a malt character from Vienna and other colored malts. Balanced with a subtle hop and caramel flavor and aroma. Clean, moderately dry finish.',
 5.3, 3);
-
-
+INSERT INTO beer VALUES (default, 'Thackery', 'pumpkin', 'Nothing says fall quite like pumpkins and beer', 5.0, 4);
+INSERT INTO beer VALUES (default, 'Honey Wheat', 'Honey - US',' Honey Wheat is an American wheat ale with 30 pounds of honey added to the brew. Honey Wheat is lightly hopped, slightly sweet, and has a clean finish.', 6.0, 5);
+INSERT INTO beer VALUES (default, 'Holy Ground', 'Export Stout', 'A bigger version of a typical dry Irish stout. This beer is forward with rich, roasted malts. Our’s is nitrogenated for a silky body', 6.0,6);
 COMMIT TRANSACTION;
-
-SELECT id, name, type, description, abv, brewery_id FROM beer WHERE brewery_id = ?
 
 
