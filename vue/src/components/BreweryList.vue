@@ -2,9 +2,7 @@
   <div class="brewery-list">
       <brewery-list-item v-for="brewery in breweries" 
       v-bind:key="brewery.id" class="brewery" 
-      v-bind:brewery="brewery" />
-      
-          
+      v-bind:brewery="brewery" />  
         
   </div>
 </template>
@@ -41,18 +39,13 @@ export default {
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: row;
-    
-
-    
-    
 }
 
 .brewery {
     
     font-size: 20px;
      flex-basis: 29%;
-    
-    
+       
 }
 
 </style>

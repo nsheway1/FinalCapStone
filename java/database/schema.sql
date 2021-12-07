@@ -57,3 +57,7 @@ INSERT INTO beer VALUES (default, 'Nikola', 'Vienna Lager', 'This is a Vienna La
 
 
 COMMIT TRANSACTION;
+
+SELECT id, name, type, description, abv, brewery_id FROM beer WHERE brewery_id = ?
+
+

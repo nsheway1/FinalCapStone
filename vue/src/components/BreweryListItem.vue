@@ -1,8 +1,12 @@
 <template>
+<div>
+  <router-link v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
       <h1>{{brewery.name}}</h1>
       <img :src="require('../img/' + brewery.name + '.jpg')" />
   </div>
+  </router-link>
+</div>  
 </template>
 
 <script>
