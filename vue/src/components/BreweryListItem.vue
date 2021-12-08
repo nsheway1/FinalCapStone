@@ -35,13 +35,13 @@ export default {
   transition-property: transform;
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
-  background-color:rgba(251, 170, 27, .5);
+  background-color:rgba(253, 205, 122, 0.5);
   margin-bottom: 10%;
-  box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
+  /* box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
   rgba(251, 170, 27, .3) 10px 10px, 
   rgba(251, 170, 27, .2) 15px 15px,
   rgba(251, 170, 27, .1) 20px 20px,
-  rgba(251, 170, 27, .005) 25px 25px;
+  rgba(251, 170, 27, .005) 25px 25px; */
   
 }
 
@@ -58,7 +58,7 @@ export default {
 }
 
 .brewery-list-title{
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgb(5, 92, 77);
   font-weight: normal;
 }
 

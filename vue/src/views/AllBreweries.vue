@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
       <brewery-list />
   </div>
 </template>
@@ -14,5 +14,10 @@ export default {
 </script>
 
 <style>
+
+.list{
+  padding-top: 1rem;
+  background-color: rgba(214, 216, 218, .8);
+}
 
 </style>

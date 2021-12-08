@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="whole-thing">
       <h1 class="brewery-details-title">{{brewery.name}}</h1>
       <div class="top-half">
       <img :src="require('../img/' + brewery.name + '-logo.jpg')" class="logo" />
@@ -47,9 +47,15 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 
 <style>
 
+.whole-thing{
+    background-color: rgba(214, 216, 218, .6);
+}
+
 .brewery-details-title{
     font-size: 3rem;
     font-weight: normal;
+    color: black;
+    margin-top: 0rem;
 }
 
 .top-half{
@@ -58,7 +64,7 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     grid-template-areas: 
     "logo descr"
     "logo address";
-    background-color: rgba(251, 170, 27, .8);
+    background-color: rgba(241, 191, 105, 1);
     align-items: center;
     justify-items: center;
 }
@@ -78,9 +84,9 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 }
 
 .beers-header{
+    color: black;
     font-size: 2.5rem;
     font-weight: normal;
-    background-color: rgba(0, 0, 0, .4);
     width: 50%;
     margin-left: auto;
     margin-right: auto;
