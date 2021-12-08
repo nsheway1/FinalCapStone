@@ -38,7 +38,7 @@ CREATE TABLE beer(
         id serial primary key,
         name varchar(200) not null,
         type varchar(200) not null,
-        description varchar(500) not null,
+        description varchar(600) not null,
         abv decimal(3, 1) not null,
         brewery_id bigint,
         
@@ -56,12 +56,37 @@ INSERT INTO brewery VALUES (default, 'Endeavor', 'There is a story behind every 
 
 INSERT INTO beer VALUES (default, 'Humulus Nimbus', 'Pale Ale', 'A pale golden ale that is both super crisp and super hop forward with a refreshing mouthfeel and a summer friendly 6% abv. Mosaic & simcoe hops lend tart blueberry and fragrant pine to a pleasingly bitter dandelion finish.',
 6.0, 1);
-INSERT INTO beer VALUES (default, 'Belloq', 'Stout', 'Stout with coffee and vanilla added', 4.2, 2);
+INSERT INTO beer VALUES (default, 'Assistant Manager', 'American Golden Ale', 
+'The definition of a drinkable and refreshing. Delicate hops and golden malts give way to firm bitterness and a clean finish', 6.0, 1);
+INSERT INTO beer VALUES (default, 'Rime', 'Winter IPA', 
+'Lightly spiced Winter IPA uses fresh ginger, coriander, and caramelized orange peels', 6.5, 1);
+INSERT INTO beer VALUES (default, 'Belloq', 'Stout', 'Stout with coffee and vanilla added', 7.5, 2);
+INSERT INTO beer VALUES (default, 'Key Bump', 'Triple IPA', 'Have you any idea what the street value of this mountain is? Clean off your mirrored glass table and grab a hundo. Key Bump bout to pack your nose full of those oh-so tropical tones. Passionfruit, guava, pineapples, calamansi and kumquat barrel down the mountain as quick as Alberto Tomba on an Olympic qualifying run. Hopped with the most dangerous weapon in the game (ElMoMoCoe) + fermented w/ the fruity flyboi Orenthal, Key Bump''s the pick-me-up you can''t put down. To quote the great Clyde Von Damme,
+"What the hell is Dim Mak?"', 10.5, 2);
+INSERT INTO beer VALUES (default, 'Discount Nachos', 'IPA', 'Double Dry-Hopped IPA', 7.3, 2);
+
+
 INSERT INTO beer VALUES (default, 'Nikola', 'Vienna Lager', 'This is a Vienna Lager that has moderate malt sweetness. It has a malt character from Vienna and other colored malts. Balanced with a subtle hop and caramel flavor and aroma. Clean, moderately dry finish.',
 5.3, 3);
+INSERT INTO beer VALUES (default, 'All Mina', 'Pale Ale', '?
+A British-Style Pale Ale with a malty middle and light hop aroma and moderate hop flavor. A slightly minerally dry finish.',
+4.8, 3);
+INSERT INTO beer VALUES (default, 'Gus', 'Porter', '
+A classic British style porter with black and brown malt flavor and aroma. Rich body with blanched dry finish.',
+5.3, 3);
+
+
 INSERT INTO beer VALUES (default, 'Thackery', 'pumpkin', 'Nothing says fall quite like pumpkins and beer', 5.0, 4);
+INSERT INTO beer VALUES (default, 'Marty Mc-Fly-PA', 'IPA', 'It doesn''t take 1.21 Gigawatts to taste this delicious New England-style IPA!', 7.0, 4);
+INSERT INTO beer VALUES (default, 'Glass Joe', 'IPA', 'You won''t need a Power Glove to attack this East Coast IPA, but it definitely packs a hoppy punch!', 6.0, 4);
 INSERT INTO beer VALUES (default, 'Honey Wheat', 'Honey - US',' Honey Wheat is an American wheat ale with 30 pounds of honey added to the brew. Honey Wheat is lightly hopped, slightly sweet, and has a clean finish.', 6.0, 5);
+INSERT INTO beer VALUES (default, 'Rise IPA', 'IPA', 'Aggressively hopped and assertively bitter, this crisp, malty India Pale Ale showcases a wonderful bouquet of citrusy and floral aromas.', 6.8, 5);
+INSERT INTO beer VALUES (default, 'Filth McNasty', 'Imperial Stout', 'A Russian Imperial Stout with an intensely concentrated roasted malt character. Aggressively hopped to give it a resinous and herbal undertone.', 9.0, 5);
+
 INSERT INTO beer VALUES (default, 'Holy Ground', 'Export Stout', 'A bigger version of a typical dry Irish stout. This beer is forward with rich, roasted malts. Our’s is nitrogenated for a silky body', 6.0,6);
+INSERT INTO beer VALUES (default, 'New World', 'IPA', 'Hops from three continents with hints of guava, key lime and tropical fruit', 5.5, 6);
+INSERT INTO beer VALUES (default, 'Shaka', 'IPA', 'Select hops from three separate continents provide an accentuated aroma of tropical fruit, while keeping bitterness, alcohol content, and malt base balanced.', 6.5, 6);
+
 COMMIT TRANSACTION;
 
 
