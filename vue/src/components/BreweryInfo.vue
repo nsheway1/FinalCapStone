@@ -1,6 +1,6 @@
 <template>
   <div class="whole-thing">
-      <h1 class="brewery-details-title">{{brewery.name}}</h1>
+      <div class="spacer"></div>
       <div class="top-half">
       <img :src="require('../img/' + brewery.name + '-logo.jpg')" class="logo" />
       <p class="description">{{brewery.description}}</p>
@@ -37,25 +37,23 @@ data(){
 created(){
 breweryService.getBreweryInfo(this.$route.params.id).then(response => {
     this.brewery = response.data;
+    this.$store.commit("SET_CURRENT_PAGE", this.brewery.name)
 });
 breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     this.beers = response.data;
-})
+});
 }
 }
 </script>
 
 <style>
 
-.whole-thing{
-    background-color: rgba(214, 216, 218, .6);
+.spacer{
+    padding: 3rem;
 }
 
-.brewery-details-title{
-    font-size: 3rem;
-    font-weight: normal;
-    color: black;
-    margin-top: 0rem;
+.whole-thing{
+    background-color: rgba(214, 216, 218, .6);
 }
 
 .top-half{

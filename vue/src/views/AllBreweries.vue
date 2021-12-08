@@ -8,7 +8,10 @@
 import BreweryList from '@/components/BreweryList.vue'
 export default {
     name: 'all-breweries',
-  components: { BreweryList }
+  components: { BreweryList },
+  created(){
+    this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries')
+  }
 
 };
 </script>
@@ -17,7 +20,6 @@ export default {
 
 .list{
   padding-top: 1rem;
-  background-color: rgba(214, 216, 218, .8);
 }
 
 </style>

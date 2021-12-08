@@ -1,17 +1,40 @@
 <template>
   <div id="app">
     <header id="nav">
+      <div id="site-logo">
+      <img class="gif" src="../src/img/beer.gif" />
       <router-link class="logo-link" v-bind:to="{ name: 'all-breweries'}">
       <h1 class="site-logo">Brewery Finder</h1>
       </router-link>
+      </div>
+      <h1 class="page-name">{{this.$store.state.currentPage}}</h1>
       <div id="links">
-      <router-link class="link" v-bind:to="{ name: 'login'}">Login</router-link>
-      <router-link class="link" v-bind:to="{ name: 'all-breweries'}">Home</router-link>
+      <div class="link" @mouseover="hover=true" @mouseleave="hover=false">
+      <img v-if="!hover" class="tap" src="../src/img/tap.jpg" />
+        <img v-else class="tap" src="../src/img/beerglass.jpg" />
+      <router-link v-bind:to="{ name: 'login'}">Login</router-link>
+        </div>
+        <div class="link" @mouseover="hoverTwo=true" @mouseleave="hoverTwo=false">
+        <img v-if="!hoverTwo" class="tap" src="../src/img/tap.jpg" />
+        <img v-else class="tap" src="../src/img/beerglass.jpg" />
+      <router-link  v-bind:to="{ name: 'all-breweries'}">Home</router-link>
+      </div>
       </div>
     </header>
     <router-view class="main" />
   </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return{
+      hover: false,
+      hoverTwo: false
+    } 
+  }
+}
+</script>
 
 <style>
 
@@ -23,10 +46,23 @@
   color: black;
   border-bottom: .1rem solid black;
   /* background: linear-gradient(165deg, #d6d8da 20%, green 20%); */
-  background: -webkit-linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), -webkit-linear-gradient(165deg, rgba(241, 191, 105, 1) 70%, #d6d8da 70%);
-    background: -o-linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), -o-linear-gradient(165deg, rgba(241, 191, 105, 1) 70%, #d6d8da 70%);
-    background: -moz-linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), -moz-linear-gradient(165deg, rgba(241, 191, 105, 1) 70%, #d6d8da 70%);
-    background: linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), linear-gradient(165deg, rgba(241, 191, 105, 1) 70%, #d6d8da 70%);
+  background: -webkit-linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), -webkit-linear-gradient(165deg, rgb(236, 170, 55) 70%, #d6d8da 70%);
+    background: -o-linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), -o-linear-gradient(165deg, rgb(236, 170, 55) 70%, #d6d8da 70%);
+    background: -moz-linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), -moz-linear-gradient(165deg, rgb(236, 170, 55) 70%, #d6d8da 70%);
+    background: linear-gradient(165deg, #d6d8da 20%, rgba(0, 0, 0, 0) 20%), linear-gradient(165deg, rgb(236, 170, 55) 70%, #d6d8da 70%);
+}
+
+.gif{
+  height: 5rem;
+}
+
+.tap{
+  height: 3rem;
+}
+
+#links{
+  display: flex;
+  align-items: center;
 }
 
 .logo-link{
@@ -41,13 +77,17 @@
 }
 
 .link{
-  color: inherit;
-  padding: 1rem;
-  text-decoration: none;
+  padding-right: 1rem;
+  display: inline-block;
 }
 
 .link:hover{
-  background-color: #c3c5c7;
+  background-color: rgb(167, 161, 161);
+}
+
+.link a{
+  text-decoration: none;
+  color: inherit;
 }
 
 #app {
