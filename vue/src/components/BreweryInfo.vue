@@ -4,20 +4,20 @@
       <div class="top-half">
       <img :src="require('../img/' + brewery.name + '-logo.jpg')" class="logo" />
       <p class="description">{{brewery.description}}</p>
-      <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
+     
       </div>
-      <h1 class="beers-header">Beer List</h1>
-      <div width="90%" style="margin: auto;">
-        <button @click="showForm=true" class="add-beer"> Add New Beer
+     
+      <div class="lower-box">
+          <div class="table-box">
+              <h1 class="beers-header">Beer List</h1>
+                      <button @click="showForm=true" class="add-beer"> Add New Beer
         
         </button>
-      <div v-if="showForm">
-        <add-beer-form /> 
-        
-      </div>
+      
+        <add-beer-form v-if="showForm"/> 
         <table class="beer-list">
         <tr>
-            <th width="60%">Name</th>
+            <th>Name</th>
             <th>Type</th>
             <th>ABV</th>
         </tr>
@@ -34,8 +34,14 @@
             <td>{{beer.abv}}%</td>
         </tr>
         </table>
+        </div>
+        <div class="map-box">
+        <brewery-map class="actual-map" />
+         <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
+        </div>
+        </div>
       </div>
-  </div>
+  
 
 </template>
 
@@ -43,8 +49,9 @@
 import breweryService from '@/services/BreweryService.js'
 import beerDetailBox from './beerDetailBox.vue';
 import AddBeerForm from './addBeerForm.vue';
+import BreweryMap from './breweryMap.vue';
 export default {
-  components: { beerDetailBox, AddBeerForm },
+  components: { beerDetailBox, AddBeerForm, BreweryMap },
 name: 'brewery-info',
 data(){
     return{
@@ -96,6 +103,7 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     justify-items: center;
 }
 
+
 .logo{
     border-radius: 1rem;
     height: 12rem;
@@ -114,15 +122,24 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     color: black;
     font-size: 2.5rem;
     font-weight: normal;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    /* width: 50%; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.lower-box {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.actual-map {
+    text-align: center;
 }
 
 .beer-list{
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+    table-layout: fixed;
+    width: 50rem;
     border: .1rem solid #d6d8da;
     background: linear-gradient(1deg, rgba(0, 0, 0, 1), rgba(251, 170, 27, .8));
 }
