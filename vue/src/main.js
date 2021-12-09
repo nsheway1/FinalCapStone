@@ -4,10 +4,18 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import Geocoder from "@pderas/vue2-geocoder"
 
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
+
+Vue.use(Geocoder, {
+  defaultCountryCode: 'US',
+  defaultLanguage: 'en',
+  defaultMode: 'address', // or 'lat-lng'
+  googleMapsApiKey: 'AIzaSyBNA9LokvNMh6SfE9LQdZVGxwK-ndBmkms'
+});
 
 Vue.use(VueGoogleMaps, {
   load: {

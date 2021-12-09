@@ -23,32 +23,56 @@
 </template>
 
 <script>
+
 export default {
     name: 'brewery-map',
-
+    props: ['brewery'],
     data() {
         return {
             center: null,
-            markers: []
+            markers: [],
+            marker: {
+              lat: 0,
+              lng: 0
+            },
+            addressObj: {
+              address_line_1: '',
+              address_line_2: '',
+              city: '',
+              state: '',
+              zip_code: '',
+              country: 'United States'
+            },
         }
     },
-
        created() {
-        
-            const marker = {
-                lat: 39.9867941,
-                lng: -83.0022474,
-            };
-
-       this.markers.push({ position: marker });
-       this.center = marker;
-        
-    },
-
-
+            this.addressObj.address_line_1 = this.brewery.streetAddress;
+            this.addressObj.city = this.brewery.city;
+            this.addressObj.state = this.brewery.state;
+            this.addressObj.zip_code = this.brewery.zipcode;
+            
+            this.$geocoder.send(this.addressObj, response => {
+              this.marker = response.results[0].geometry.location
+              this.markers.push({ position: this.marker });
+              this.center = this.marker;
+            })
+            
+    }
 }
 </script>
 
 <style>
 
 </style>
+
+
+
+// let marker = {
+            //   lat: 0,
+            //   lng: 0
+            // };
+
+// const marker = {
+            //     lat: 39.9867941,
+            //     lng: -83.0022474,
+            // };

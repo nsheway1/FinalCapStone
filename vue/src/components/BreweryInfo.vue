@@ -36,7 +36,7 @@
         </table>
         </div>
         <div class="map-box">
-        <brewery-map class="actual-map" />
+        <brewery-map class="actual-map" v-bind:brewery="brewery" />
          <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
         </div>
         </div>
