@@ -7,30 +7,56 @@
       <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
       </div>
       <h1 class="beers-header">Beer List</h1>
-      <table class="beer-list">
-      <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>ABV</th>
-      </tr>
-      <tr v-for="beer in beers" v-bind:key="beer.id" >
-          <td>{{beer.name}}</td>
-          <td>{{beer.type}}</td>
-          <td>{{beer.abv}}%</td>
-      </tr>
-      </table>
+      <div width="90%" style="margin: auto;">
+        <button @click="showForm=true" class="add-beer"> Add New Beer
+        
+        </button>
+      <div v-if="showForm">
+        <add-beer-form /> 
+        
+      </div>
+        <table class="beer-list">
+        <tr>
+            <th width="60%">Name</th>
+            <th>Type</th>
+            <th>ABV</th>
+        </tr>
+        <tr @click="updateSelectedBeer(beer, index)" v-for="(beer, index) in beers" v-bind:key="beer.id"  >
+       
+            <td>
+                {{beer.name}}
+                
+                    
+                <beer-detail-box v-bind:beer="beer" v-if="selectedBeer== index">
+                    
+                </beer-detail-box></td>
+            <td>{{beer.type}}</td>
+            <td>{{beer.abv}}%</td>
+        </tr>
+        </table>
+      </div>
   </div>
 
 </template>
 
 <script>
 import breweryService from '@/services/BreweryService.js'
+import beerDetailBox from './beerDetailBox.vue';
+import AddBeerForm from './addBeerForm.vue';
 export default {
+  components: { beerDetailBox, AddBeerForm },
 name: 'brewery-info',
 data(){
     return{
         brewery: {},
-        beers: []
+        beers: [],
+        selectedBeer: null,
+        showForm: false
+    }
+},
+methods: {
+    updateSelectedBeer(beer, index) {
+        this.selectedBeer = index;
     }
 },
 
@@ -41,6 +67,9 @@ breweryService.getBreweryInfo(this.$route.params.id).then(response => {
 });
 breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     this.beers = response.data;
+    this.beers.forEach(function(beer) {
+        beer.showInfo = "false";
+    })
 });
 }
 }
@@ -98,10 +127,16 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     background: linear-gradient(1deg, rgba(0, 0, 0, 1), rgba(251, 170, 27, .8));
 }
 
-.beer-list th, td{
+.beer-list th{
     font-weight: normal;
     border: .1rem solid #d6d8da;
     font-size: 1.7rem;
+}
+
+.beer-list td {
+    font-weight: normal;
+    border: .1rem solid #d6d8da;
+    font-size: 1.3rem;
 }
 
 .beer-list tr:hover{
@@ -113,4 +148,17 @@ p{
     font-size: 1.7rem;
 }
 
+ .add-beer {
+        text-align: left;
+        padding: 20px 50px;
+        background: linear-gradient(1deg, rgba(0, 0, 0, 1), rgba(251, 170, 27, .8));
+        color: white;
+        border: solid rgba(255,255,255,0) 1pt;
+        font-size: 1em;
+    }
+    .add-beer:hover {
+        background: rgba(251, 170, 27, .8);
+        color:black;
+        border: solid black 1pt;
+    }
 </style>

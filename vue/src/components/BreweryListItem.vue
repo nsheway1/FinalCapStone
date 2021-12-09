@@ -4,6 +4,7 @@
   <div class="brewerybox">
       <h1 class="brewery-list-title">{{brewery.name}}</h1>
       <img :src="require('../img/' + brewery.name + '.jpg')" />
+      
   </div>
   </router-link>
 </div>  
