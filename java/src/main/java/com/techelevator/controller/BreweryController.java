@@ -35,4 +35,14 @@ public class BreweryController {
     public List<Beer> findBeersByBreweryId(@PathVariable Long id){
         return beerDAO.getBeersByBreweryId(id);
     }
+
+    @RequestMapping(path = "/breweries/{id}/beers", method = RequestMethod.POST)
+    public Beer addNewBeer(@RequestBody Beer beer, @PathVariable Long id){
+        return beerDAO.addNewBeer(beer, id);
+    }
+
+    @RequestMapping(path = "/breweries/{breweryId}/beers/{beerId}", method = RequestMethod.DELETE)
+    public void deleteBeer(@PathVariable Long breweryId, @PathVariable Long beerId){
+        beerDAO.deleteBeer(beerId);
+    }
 }

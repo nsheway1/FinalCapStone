@@ -8,19 +8,19 @@ public class Beer {
     private String type;
     private String description;
     private Double abv;
-    private Long brewery_id;
+    private Long breweryId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Beer beer = (Beer) o;
-        return Objects.equals(id, beer.id) && Objects.equals(name, beer.name) && Objects.equals(type, beer.type) && Objects.equals(description, beer.description) && Objects.equals(abv, beer.abv) && Objects.equals(brewery_id, beer.brewery_id);
+        return Objects.equals(id, beer.id) && Objects.equals(name, beer.name) && Objects.equals(type, beer.type) && Objects.equals(description, beer.description) && Objects.equals(abv, beer.abv) && Objects.equals(breweryId, beer.breweryId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, type, description, abv, brewery_id);
+        return Objects.hash(id, name, type, description, abv, breweryId);
     }
 
     public Long getId() {
@@ -63,11 +63,11 @@ public class Beer {
         this.abv = abv;
     }
 
-    public Long getBrewery_id() {
-        return brewery_id;
+    public Long getBreweryId() {
+        return breweryId;
     }
 
-    public void setBrewery_id(Long brewery_id) {
-        this.brewery_id = brewery_id;
+    public void setBreweryId(Long breweryId) {
+        this.breweryId = breweryId;
     }
 }

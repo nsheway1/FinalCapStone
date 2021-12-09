@@ -10,14 +10,16 @@
       <h1 class="page-name">{{this.$store.state.currentPage}}</h1>
       <div id="links">
       <div class="link" @mouseover="hover=true" @mouseleave="hover=false">
+        <router-link v-bind:to="{ name: 'login'}">
       <img v-if="!hover" class="tap" src="../src/img/tap.jpg" />
         <img v-else class="tap" src="../src/img/beerglass.jpg" />
-      <router-link v-bind:to="{ name: 'login'}">Login</router-link>
+      Login</router-link>
         </div>
         <div class="link" @mouseover="hoverTwo=true" @mouseleave="hoverTwo=false">
+          <router-link  v-bind:to="{ name: 'all-breweries'}">
         <img v-if="!hoverTwo" class="tap" src="../src/img/tap.jpg" />
         <img v-else class="tap" src="../src/img/beerglass.jpg" />
-      <router-link  v-bind:to="{ name: 'all-breweries'}">Home</router-link>
+      Home</router-link>
       </div>
       </div>
     </header>
