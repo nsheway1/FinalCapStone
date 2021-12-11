@@ -50,11 +50,11 @@ export default {
             this.addressObj.city = this.brewery.city;
             this.addressObj.state = this.brewery.state;
             this.addressObj.zip_code = this.brewery.zipcode;
-            
+      
             this.$geocoder.send(this.addressObj, response => {
               this.marker = response.results[0].geometry.location
               this.markers.push({ position: this.marker });
-              this.center = this.marker;
+              this.center = this.marker; 
             })
             
     }

@@ -88,5 +88,3 @@ INSERT INTO beer VALUES (default, 'New World', 'IPA', 'Hops from three continent
 INSERT INTO beer VALUES (default, 'Shaka', 'IPA', 'Select hops from three separate continents provide an accentuated aroma of tropical fruit, while keeping bitterness, alcohol content, and malt base balanced.', 6.5, 6);
 
 COMMIT TRANSACTION;
-
-
