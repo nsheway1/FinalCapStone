@@ -1,12 +1,11 @@
 <template>
-  <div> 
+  <div v-if="loaded"> 
          <GmapMap 
   :center='center'
   :zoom="15"
   map-type-id="terrain"
   style="width: 100%; height: 25rem;"
 >
-
   <GmapMarker
     :key="index"
     v-for="(m, index) in markers"
@@ -16,10 +15,7 @@
     @click="center=m.position"
   />
 </GmapMap>
-
   </div>
-
-
 </template>
 
 <script>
@@ -29,12 +25,10 @@ export default {
     props: ['brewery'],
     data() {
         return {
+            loaded: false,
             center: null,
-            markers: [],
-            marker: {
-              lat: 0,
-              lng: 0
-            },
+            markers: null,
+            marker: null,
             addressObj: {
               address_line_1: '',
               address_line_2: '',
@@ -50,14 +44,20 @@ export default {
             this.addressObj.city = this.brewery.city;
             this.addressObj.state = this.brewery.state;
             this.addressObj.zip_code = this.brewery.zipcode;
-      
-            this.$geocoder.send(this.addressObj, response => {
-              this.marker = response.results[0].geometry.location
-              this.markers.push({ position: this.marker });
-              this.center = this.marker; 
+    },
+
+    mounted() {
+              this.$geocoder.send(this.addressObj, response => {
+              const tempMarker = response.results[0].geometry.location
+              let tempMarkers = []
+              tempMarkers.push({position: tempMarker})
+              this.marker = tempMarker;
+              this.markers = tempMarkers;
+              this.center = tempMarker;
+              this.loaded = true;
             })
-            
-    }
+    },
+
 }
 </script>
 
