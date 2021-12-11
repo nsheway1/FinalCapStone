@@ -29,6 +29,15 @@ public class JDBCBreweryDAO implements BreweryDAO{
         return breweries;
     }
 
+    public Brewery addNewBrewery(Brewery breweryToInsert) {
+        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?) RETURNING id";
+        Long breweryId = jdbcTemplate.queryForObject(sql, Long.class, breweryToInsert.getName(), breweryToInsert.getDescription(),
+                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode());
+        breweryToInsert.setId(breweryId);
+        return breweryToInsert;
+
+    }
+
     public Brewery getBreweryById(Long id){
         Brewery brewery = new Brewery();
         String sql = "SELECT id, name, description, street_address, city, state, zipcode FROM brewery " +

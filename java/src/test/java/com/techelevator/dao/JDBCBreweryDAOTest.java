@@ -62,6 +62,28 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
         Assert.assertEquals(expectedResult, actualResult);
     }
 
+    @Test
+    public void add_new_brewery_successful_database_add() {
+        //getAllBreweries/ breweries from db.size
+        int initialSize = jdbcBreweryDAO.getAllBreweries().size();
+        //insert a brewery
+        Brewery testBreweryThree = new Brewery();
+        testBreweryThree.setName("Bob's");
+        testBreweryThree.setDescription("A place");
+        testBreweryThree.setStreetAddress("234 street");
+        testBreweryThree.setCity("Columbys");
+        testBreweryThree.setState("Ohio");
+        testBreweryThree.setZipcode("77777");
+        jdbcBreweryDAO.addNewBrewery(testBrewery);
+
+        //getAllBreweries / compare size
+        int actualSize = jdbcBreweryDAO.getAllBreweries().size();
+        int expectedSize = initialSize + 1;
+        //expect size to be +1
+        Assert.assertEquals(expectedSize, actualSize);
+    }
+
+
     private Brewery insertTestBrewery(Brewery breweryToInsert) {
         String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?) RETURNING id";
         Long breweryId = jdbcTemplate.queryForObject(sql, Long.class, breweryToInsert.getName(), breweryToInsert.getDescription(),
