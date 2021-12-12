@@ -22,11 +22,8 @@
             <th>ABV</th>
         </tr>
         <tr @click="updateSelectedBeer(beer, index)" v-for="(beer, index) in beers" v-bind:key="beer.id"  >
-       
             <td>
                 {{beer.name}}
-                
-                    
                 <beer-detail-box v-bind:beer="beer" v-if="selectedBeer== index">
                     
                 </beer-detail-box></td>
@@ -40,9 +37,12 @@
          <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
         </div>
         </div>
+        <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
+        <button @click="$refs.imgInput.click()">Select Photo</button>
+        <p v-if="photoSelected">Photo Selected</p>
+        <button @click="onUpload">Upload</button>
+        <p v-if="uploadSuccess">Upload Successful!</p>
       </div>
-  
-
 </template>
 
 <script>
@@ -50,6 +50,7 @@ import breweryService from '@/services/BreweryService.js'
 import beerDetailBox from './beerDetailBox.vue';
 import AddBeerForm from './addBeerForm.vue';
 import BreweryMap from './breweryMap.vue';
+import axios from 'axios';
 export default {
   components: { beerDetailBox, AddBeerForm, BreweryMap },
 name: 'brewery-info',
@@ -58,12 +59,30 @@ data(){
         brewery: {},
         beers: [],
         selectedBeer: null,
-        showForm: false
+        showForm: false,
+        fileToUpload: null,
+        photoSelected: false,
+        uploadSuccess: false
     }
 },
 methods: {
     updateSelectedBeer(beer, index) {
         this.selectedBeer = index;
+    },
+    onFileSelected(event) {
+        this.fileToUpload = event.target.files[0];
+        this.photoSelected = true;
+        this.uploadSuccess = false;
+    },
+    onUpload(){
+        const fd = new FormData();
+        fd.append('image', this.fileToUpload, this.fileToUpload.name);
+        axios.post('https://us-central1-brewery-finder-f943e.cloudfunctions.net/uploadImage', fd)
+        .then(response => {
+            console.log(response);
+        });
+        this.photoSelected = false;
+        this.uploadSuccess = true;
     }
 },
 

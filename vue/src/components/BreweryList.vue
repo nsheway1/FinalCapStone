@@ -1,10 +1,12 @@
 <template>
+<div>
   <div class="brewery-list">
       <brewery-list-item v-for="brewery in breweries" 
       v-bind:key="brewery.id" class="brewery" 
       v-bind:brewery="brewery" />  
         
   </div>
+</div>
 </template>
 
 <script>
