@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     breweries: [],
+    featured: [],
     currentPage: ''
   },
   mutations: {
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     },
     SET_BREWERIES(state, breweries) {
       state.breweries = breweries;
+    },
+    SET_FEATURED(state, brewery) {
+      state.featured = brewery
     },
     SET_CURRENT_PAGE(state, currentPage){
       state.currentPage = currentPage;
