@@ -23,6 +23,10 @@ export default {
     
     deleteBeer(beerId, breweryId){
         return http.delete(`/breweries/${breweryId}/beers/${beerId}`)
+    },
+
+    addNewBrewery(brewery){
+        return http.post(`/breweries`,brewery)
     }
 
 }
