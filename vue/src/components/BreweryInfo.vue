@@ -38,9 +38,10 @@
         </div>
         </div>
         <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
-        <button @click="$refs.imgInput.click()">Select Photo</button>
+        <h1 class="insert-photo">Insert photo here</h1> 
+        <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
         <p v-if="photoSelected">Photo Selected</p>
-        <button @click="onUpload">Upload</button>
+        <button class="upload-photo" @click="onUpload">Upload</button>
         <p v-if="uploadSuccess">Upload Successful!</p>
       </div>
 </template>
@@ -196,5 +197,31 @@ p{
         background: rgba(251, 170, 27, .8);
         color:black;
         border: solid black 1pt;
+    }
+
+    .select-photo{
+    background-color: rgba(251, 170, 27, .8);
+    border-radius: 4px;
+    margin-bottom: 3px;
+    
+    }
+    .select-photo:hover{
+        background-color: rgb(247, 247, 247);
+        
+    }
+
+    .upload-photo{
+        background: rgba(251, 170, 27, .8);
+         border-radius: 4px;
+    }
+
+    .upload-photo:hover{
+     background-color: rgb(247, 247, 247);   
+    }
+
+    .insert-photo{
+        color: rgba(251, 170, 27, .8);
+        font-size: 2;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 </style>
