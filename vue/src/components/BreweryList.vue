@@ -3,7 +3,7 @@
 
 
   <div class="brewery-list">
-    <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
+   
       <brewery-list-item v-for="brewery in filteredList" 
       v-bind:key="brewery.id" class="brewery" 
       v-bind:brewery="brewery"/>
@@ -23,13 +23,7 @@ export default {
 
     },
 
-    data() {
-        return {
-                    filter: {
-            breweryName: ''
-        }
-        }
-    },
+   props: ['filter'],
     
 
     computed: {

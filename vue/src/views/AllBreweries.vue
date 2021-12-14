@@ -1,8 +1,9 @@
 <template>
 <div>
-  <!-- <featured-brewery /> -->
+<label class="brew-form-label" for="breweryNameFilter">Search</label>
+   <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
   <div class="list">
-      <brewery-list />
+      <brewery-list v-bind:filter="filter" />
   </div>
   <button @click="isAddingBrewery = true">Add Brewery</button>
   <add-brewery-form v-if="isAddingBrewery" />
@@ -17,7 +18,10 @@ export default {
   components: { BreweryList, AddBreweryForm },
   data(){
     return{
-      isAddingBrewery: false
+      isAddingBrewery: false,
+      filter: {
+        breweryName:""
+      }
     }
   },
   created(){
