@@ -46,7 +46,7 @@ export default {
     this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
 
           setTimeout(() => 
-          this.setFeatured(this.$store.state.breweries), 100
+          this.setFeatured(this.$store.state.breweries), 500
        )
    
     
