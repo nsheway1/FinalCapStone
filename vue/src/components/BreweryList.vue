@@ -1,12 +1,9 @@
 <template>
-
-  <div class="brewery-list" id="list">
-
-      <brewery-list-item :id="brewery.id" draggable="true" v-for="brewery in breweries" 
+  <div class="brewery-list">
+   
+      <brewery-list-item v-for="brewery in filteredList" 
       v-bind:key="brewery.id" class="brewery" 
       v-bind:brewery="brewery"/>
-    
-        
   </div>
 
 </template>
@@ -23,12 +20,23 @@ export default {
 
     },
 
+   props: ['filter'],
+    
+
     computed: {
         breweries() {
             const breweryList = this.$store.state.breweries;
             return breweryList;
 
         },
+
+        
+
+        filteredList() {
+            return this.$store.state.breweries.filter((brewery) => {
+                return brewery.name.toLowerCase().includes(this.filter.breweryName.toLowerCase())
+            })
+        }
         // setFeatured(brewery) {
         //     this.$store.commit("SET_FEATURED", brewery);
         //     const featured = this.$store.state.featured;

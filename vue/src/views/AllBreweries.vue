@@ -1,8 +1,10 @@
 <template>
 <div>
   <!-- <featured-brewery v-if="pageLoaded" :key="id" :id="id" @dragover.prevent @drop.prevent="drop" /> -->
+<label class="brew-form-label" for="breweryNameFilter">Search</label>
+   <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
   <div class="list">
-      <brewery-list />
+      <brewery-list v-bind:filter="filter" />
   </div>
   <button @click="isAddingBrewery = true">Add Brewery</button>
   <add-brewery-form v-if="isAddingBrewery" />
@@ -20,7 +22,10 @@ export default {
   data(){
     return{
       isAddingBrewery: false,
-      pageLoaded: false
+      pageLoaded: false,
+      filter: {
+        breweryName:""
+      }
     }
   },
   created(){
