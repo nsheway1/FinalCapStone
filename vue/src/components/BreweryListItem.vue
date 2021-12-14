@@ -1,5 +1,6 @@
 <template>
-<div v-if="isLoaded">
+<!-- :draggable="draggable" @dragstart="dragStart" @dragover.stop>  -->
+<div v-if="isLoaded" :id="id">  
   <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
       <h1 class="brewery-list-title">{{brewery.name}}</h1>
@@ -14,7 +15,7 @@
 import axios from 'axios'
 export default {
     name: 'brewery-list-item',
-    props: ['brewery'],
+    props: ['brewery', 'id', 'draggable'],
     data(){
       return{
         imageUrl: '',
@@ -27,7 +28,16 @@ export default {
         this.imageUrl = response.data;
       });
       this.isLoaded = true;
-    }
+    },
+    // methods: {
+    //   dragStart: event => {
+    //     const target = event.target;
+    //     event.dataTransfer.setData('box_id', target.id);
+    //     setTimeout(() => {
+    //       target.style.display = "none";
+    //     })
+    //   }
+    // }
 
 }
 </script>

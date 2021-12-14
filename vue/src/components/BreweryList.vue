@@ -1,8 +1,8 @@
 <template>
 
-  <div class="brewery-list">
+  <div class="brewery-list" id="list">
 
-      <brewery-list-item v-for="brewery in breweries" 
+      <brewery-list-item :id="brewery.id" draggable="true" v-for="brewery in breweries" 
       v-bind:key="brewery.id" class="brewery" 
       v-bind:brewery="brewery"/>
     
@@ -40,8 +40,7 @@ export default {
     created() {
         breweryService.getBreweries().then( response => {
             this.$store.commit("SET_BREWERIES", response.data);
-        })
-        
+        })  
     }
 }
 </script>
