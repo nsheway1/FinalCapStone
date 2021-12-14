@@ -1,6 +1,6 @@
 <template>
 <div>
-  <!-- <featured-brewery v-if="pageLoaded" :key="id" :id="id" @dragover.prevent @drop.prevent="drop" /> -->
+  <featured-brewery v-if="pageLoaded" v-bind:featuredBrewery="featuredBrewery"/>
 <label class="brew-form-label" for="breweryNameFilter">Search</label>
    <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
   <div class="list">
@@ -14,27 +14,44 @@
 <script>
 import BreweryList from '@/components/BreweryList.vue'
 import AddBreweryForm from '../components/addBreweryForm.vue';
-// import FeaturedBrewery from '../components/FeaturedBrewery.vue';
+// import { set } from 'vue/types/umd';
+import FeaturedBrewery from '../components/FeaturedBrewery.vue';
 export default {
   name: 'all-breweries',
   props: ['id'],
-  components: { BreweryList, AddBreweryForm},
+  components: { BreweryList, AddBreweryForm, FeaturedBrewery},
   data(){
     return{
       isAddingBrewery: false,
       pageLoaded: false,
       filter: {
         breweryName:""
-      }
+      },
+      featuredBrewery: null
     }
   },
   created(){
     this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
+    this.setFeatured(this.$store.state.breweries);
+
   },
   mounted(){
     this.$forceUpdate;
     this.pageLoaded = true;
    },
+
+   methods: {
+     setFeatured(breweryList) {
+       breweryList.forEach(brewery => {
+          let x = 0;
+         if (brewery.voteCount > x) {
+           x = brewery.voteCount;
+           this.featuredBrewery = brewery;
+         }
+       }); 
+
+     
+   } 
   // methods: {
   //     drop: event => {
   //       const box_id = event.dataTransfer.getData('box_id');
@@ -44,7 +61,9 @@ export default {
   //     }
   //   }
 
-};
+}
+
+}
 </script>
 
 <style>
