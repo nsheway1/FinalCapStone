@@ -89,6 +89,17 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
         Assert.assertEquals(expectedSize, actualSize);
     }
 
+    @Test
+    public void increment_vote_count_vote_added_correctly() {
+        jdbcBreweryDAO.incrementVoteCount(testBrewery);
+        int expectedResult = testBrewery.getVoteCount() + 1;
+        String sql = "SELECT vote_count FROM brewery WHERE id = ?";
+        int actualResult = jdbcTemplate.queryForObject(sql, int.class, testBrewery.getId());
+
+        Assert.assertEquals(expectedResult, actualResult);
+
+    }
+
 
     private Brewery insertTestBrewery(Brewery breweryToInsert) {
         String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
