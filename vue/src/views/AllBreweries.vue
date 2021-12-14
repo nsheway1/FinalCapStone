@@ -14,8 +14,9 @@
 <script>
 import BreweryList from '@/components/BreweryList.vue'
 import AddBreweryForm from '../components/addBreweryForm.vue';
-// import { set } from 'vue/types/umd';
 import FeaturedBrewery from '../components/FeaturedBrewery.vue';
+import breweryService from '@/services/BreweryService'
+
 export default {
   name: 'all-breweries',
   props: ['id'],
@@ -30,17 +31,35 @@ export default {
       featuredBrewery: null
     }
   },
-  created(){
-    this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
-    this.setFeatured(this.$store.state.breweries);
+
+  beforeCreate() {
+         breweryService.getBreweries().then( response => {
+            this.$store.commit("SET_BREWERIES", response.data);
+         
+        })
+
 
   },
-  mounted(){
-    this.$forceUpdate;
-    this.pageLoaded = true;
-   },
+
+  created(){
+
+    this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
+
+          setTimeout(() => 
+          this.setFeatured(this.$store.state.breweries), 100
+       )
+   
+    
+
+  },
+
+  mounted() {
+
+  },
+
 
    methods: {
+
      setFeatured(breweryList) {
        breweryList.forEach(brewery => {
           let x = 0;
@@ -48,8 +67,8 @@ export default {
            x = brewery.voteCount;
            this.featuredBrewery = brewery;
          }
-       }); 
-
+       }) 
+       this.pageLoaded = true;
      
    } 
   // methods: {
