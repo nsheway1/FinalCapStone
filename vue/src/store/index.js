@@ -23,7 +23,8 @@ export default new Vuex.Store({
     breweries: [],
     featured: [],
     currentPage: '',
-    featuredBrewery: null
+    featuredBrewery: null,
+    filter: {breweryName: ''}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -50,9 +51,6 @@ export default new Vuex.Store({
     },
     SET_CURRENT_PAGE(state, currentPage){
       state.currentPage = currentPage;
-    },
-    SET_FEATURED_BREWERY(state, brewery){
-      state.featuredBrewery = brewery;
     }
   }
 })
