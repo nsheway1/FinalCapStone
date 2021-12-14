@@ -52,8 +52,8 @@ created() {
   color: inherit;
   margin-top: 0rem;
   width: 42rem;
-  height: 21.5rem;
-    border: .1rem black solid;
+  height: 21rem;
+  border: .1rem black solid;
   border-radius: 1rem;
   background-color:rgba(251, 170, 27, .5);
   box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
