@@ -19,7 +19,7 @@ public class JDBCBreweryDAO implements BreweryDAO{
 
     public List<Brewery> getAllBreweries() {
         List<Brewery> breweries = new ArrayList<Brewery>();
-        String sql = "SELECT id, name, description, street_address, city, state, zipcode FROM brewery";
+        String sql = "SELECT id, name, description, street_address, city, state, zipcode, vote_count, carousel_count FROM brewery";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Brewery brewery = mapRowToBrewery(results);
@@ -30,9 +30,10 @@ public class JDBCBreweryDAO implements BreweryDAO{
     }
 
     public Brewery addNewBrewery(Brewery breweryToInsert) {
-        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
         Long breweryId = jdbcTemplate.queryForObject(sql, Long.class, breweryToInsert.getName(), breweryToInsert.getDescription(),
-                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode());
+                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode(),
+                 breweryToInsert.getVoteCount(), breweryToInsert.getCarouselCount());
         breweryToInsert.setId(breweryId);
         return breweryToInsert;
 
@@ -40,8 +41,8 @@ public class JDBCBreweryDAO implements BreweryDAO{
 
     public Brewery getBreweryById(Long id){
         Brewery brewery = new Brewery();
-        String sql = "SELECT id, name, description, street_address, city, state, zipcode FROM brewery " +
-                "WHERE id = ?";
+        String sql = "SELECT id, name, description, street_address, city, state, zipcode, " +
+                "vote_count, carousel_count FROM brewery WHERE id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         while(results.next()){
             brewery = mapRowToBrewery(results);
@@ -58,6 +59,8 @@ public class JDBCBreweryDAO implements BreweryDAO{
         brewery.setCity(results.getString("city"));
         brewery.setState(results.getString("state"));
         brewery.setZipcode(results.getString("zipcode"));
+        brewery.setVoteCount(results.getInt("vote_count"));
+        brewery.setCarouselCount(results.getInt("carousel_count"));
 
         return brewery;
     }

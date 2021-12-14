@@ -31,6 +31,8 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
         this.testBrewery.setCity("columbus");
         this.testBrewery.setState("Ohio");
         this.testBrewery.setZipcode("43445");
+        this.testBrewery.setVoteCount(34);
+        this.testBrewery.setCarouselCount(3);
         this.testBrewery = insertTestBrewery(testBrewery);
 
         this.testBreweryTwo = new Brewery();
@@ -40,6 +42,8 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
         this.testBreweryTwo.setCity("columbus 2");
         this.testBreweryTwo.setState("Ohio 2");
         this.testBreweryTwo.setZipcode("99999");
+        this.testBreweryTwo.setVoteCount(20);
+        this.testBreweryTwo.setCarouselCount(2);
         this.testBreweryTwo = insertTestBrewery(testBreweryTwo);
     }
 
@@ -74,6 +78,8 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
         testBreweryThree.setCity("Columbys");
         testBreweryThree.setState("Ohio");
         testBreweryThree.setZipcode("77777");
+        testBreweryThree.setVoteCount(22);
+        testBreweryThree.setCarouselCount(4);
         jdbcBreweryDAO.addNewBrewery(testBrewery);
 
         //getAllBreweries / compare size
@@ -85,9 +91,10 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
 
 
     private Brewery insertTestBrewery(Brewery breweryToInsert) {
-        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
         Long breweryId = jdbcTemplate.queryForObject(sql, Long.class, breweryToInsert.getName(), breweryToInsert.getDescription(),
-                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode());
+                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode(),
+                breweryToInsert.getVoteCount(), breweryToInsert.getCarouselCount());
         breweryToInsert.setId(breweryId);
         return breweryToInsert;
     }

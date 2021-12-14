@@ -35,6 +35,8 @@ public class JDBCBeerDAOTest extends DAOIntegrationTest{
         this.testBrewery.setCity("columbus");
         this.testBrewery.setState("Ohio");
         this.testBrewery.setZipcode("43445");
+        this.testBrewery.setVoteCount(34);
+        this.testBrewery.setCarouselCount(3);
         this.testBrewery = insertTestBrewery(testBrewery);
 
         jdbcTemplate.update("TRUNCATE beer CASCADE");
@@ -93,9 +95,10 @@ public class JDBCBeerDAOTest extends DAOIntegrationTest{
     }
 
     private Brewery insertTestBrewery(Brewery breweryToInsert) {
-        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
         Long breweryId = jdbcTemplate.queryForObject(sql, Long.class, breweryToInsert.getName(), breweryToInsert.getDescription(),
-                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode());
+                breweryToInsert.getStreetAddress(), breweryToInsert.getCity(), breweryToInsert.getState(), breweryToInsert.getZipcode(),
+                breweryToInsert.getVoteCount(), breweryToInsert.getCarouselCount());
         breweryToInsert.setId(breweryId);
         return breweryToInsert;
     }
