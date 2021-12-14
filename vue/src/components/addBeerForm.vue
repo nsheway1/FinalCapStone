@@ -32,7 +32,6 @@ methods:{
     submitForm(){
         this.beer.breweryId= this.$route.params.id;
         breweryService.addNewBeer(this.beer, this.$route.params.id);
-
          document.location.reload(true);
         this.$forceUpdate();
     }

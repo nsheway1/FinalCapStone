@@ -1,9 +1,9 @@
 <template>
-<div>
+<div v-if="isLoaded">
   <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
       <h1 class="brewery-list-title">{{brewery.name}}</h1>
-      <img :src="require('../img/' + brewery.name + '.jpg')" />
+      <img :src="imageUrl" />
       
   </div>
   </router-link>
@@ -11,10 +11,23 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'brewery-list-item',
-    props: ['brewery']
-    
+    props: ['brewery'],
+    data(){
+      return{
+        imageUrl: '',
+        isLoaded: false
+      }
+    },
+    created(){
+      axios.get('https://us-central1-brewery-finder-f943e.cloudfunctions.net/getImageUrl', { params: { name: this.brewery.name + '.jpg' }})
+      .then(response => {
+        this.imageUrl = response.data;
+      });
+      this.isLoaded = true;
+    }
 
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="whole-thing">
       <div class="spacer"></div>
       <div class="top-half">
-      <img :src="require('../img/' + brewery.name + '-logo.jpg')" class="logo" />
+      <img :src="imageUrl" class="logo" />
       <p class="description">{{brewery.description}}</p>
      
       </div>
@@ -33,7 +33,7 @@
         </table>
         </div>
         <div class="map-box">
-        <brewery-map class="actual-map" v-bind:brewery="brewery" />
+        <brewery-map v-if="mapReady" class="actual-map" v-bind:brewery="brewery" />
          <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
         </div>
         </div>
@@ -63,7 +63,10 @@ data(){
         showForm: false,
         fileToUpload: null,
         photoSelected: false,
-        uploadSuccess: false
+        uploadSuccess: false,
+        imageUrl: '',
+        isLoaded: false,
+        mapReady: false
     }
 },
 methods: {
@@ -90,7 +93,12 @@ methods: {
 created(){
 breweryService.getBreweryInfo(this.$route.params.id).then(response => {
     this.brewery = response.data;
+    this.mapReady = true;
     this.$store.commit("SET_CURRENT_PAGE", this.brewery.name)
+    axios.get('https://us-central1-brewery-finder-f943e.cloudfunctions.net/getImageUrl', { params: { name: this.brewery.name + '-logo.jpg' }})
+      .then(response => {
+        this.imageUrl = response.data;
+      });
 });
 breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     this.beers = response.data;
@@ -98,6 +106,7 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
         beer.showInfo = "false";
     })
 });
+      this.isLoaded = true;
 }
 }
 </script>

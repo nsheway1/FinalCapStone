@@ -22,7 +22,8 @@ export default new Vuex.Store({
     user: currentUser || {},
     breweries: [],
     featured: [],
-    currentPage: ''
+    currentPage: '',
+    featuredBrewery: null
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
