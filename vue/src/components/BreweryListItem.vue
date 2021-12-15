@@ -1,6 +1,6 @@
 <template>
 <!-- :draggable="draggable" @dragstart="dragStart" @dragover.stop>  -->
-<div v-if="isLoaded" :id="id">  
+<div class ="brewery-div" v-if="isLoaded" :id="id">  
   <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
       <h1 class="brewery-list-title">{{brewery.name}}</h1>
@@ -8,6 +8,14 @@
       
   </div>
   </router-link>
+  <div class="social-parent">
+  <div class="social">
+    <p class="like-text">Like {{this.brewery.name}} ?</p>
+  <img v-if="!voted" class="unliked" src="../img/singleBeerEmpty.jpg" @click="voted=true"/>
+  <img v-if="voted" class="liked" src="../img/twinBeersFull.jpg"/>
+
+  </div>
+  </div>
 </div>  
 </template>
 
@@ -19,7 +27,8 @@ export default {
     data(){
       return{
         imageUrl: '',
-        isLoaded: false
+        isLoaded: false,
+        voted: false
       }
     },
     created(){
@@ -43,6 +52,46 @@ export default {
 </script>
 
 <style>
+.like-text {
+  font-size: 1rem;
+}
+
+.social-parent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+
+.social {
+  display: flex;
+  background-color: wheat;
+  justify-content: center;
+  max-width: 22rem;
+  max-height: 3rem;
+}
+
+.unliked{
+  
+  height: 3rem;
+  margin-top: 0rem;
+}
+
+.unliked:hover {
+  background-color: teal;
+  cursor: pointer;
+}
+
+.liked {
+  height: 3rem;
+  margin-top: 0rem;
+}
+
+.brewery-div{
+  margin-bottom: 4rem;
+  
+}
+
 .brewery-link{
   text-decoration: none;
   color: inherit;
@@ -60,7 +109,7 @@ export default {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
   background-color:rgba(251, 170, 27, .5);
-  margin-bottom: 10%;
+  margin-bottom: 3%;
   box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
   rgba(251, 170, 27, .3) 10px 10px, 
   rgba(251, 170, 27, .2) 15px 15px,
@@ -99,5 +148,7 @@ export default {
  90% { transform: translate(1px, 2px) rotate(0deg); }
  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+
 
 </style>

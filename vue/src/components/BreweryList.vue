@@ -54,6 +54,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: row;
+    
 }
 
 .brewery {
