@@ -1,7 +1,7 @@
 <template>
   <div>
       <small>{{beer.description}}</small>
-      <button @click="removeBeer(beer.id)" >Delete</button>
+      <button v-if="this.$store.state.token" @click="removeBeer(beer.id)" >Delete</button>
   </div>
       
 </template>
@@ -13,8 +13,8 @@ name:"beer-detail-box",
 props: ['beer'],
 methods:{
     removeBeer(beerId){
-        breweryService.deleteBeer(beerId, this.$route.params.id);
 
+        breweryService.deleteBeer(beerId, this.$route.params.id);
         document.location.reload(true);
 
     

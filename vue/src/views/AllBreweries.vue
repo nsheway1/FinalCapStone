@@ -6,7 +6,7 @@
   <div class="list">
       <brewery-list v-bind:filter="filter" />
   </div>
-  <button @click="isAddingBrewery = true">Add Brewery</button>
+  <button v-if="isLoggedIn" @click="isAddingBrewery = true">Add Brewery</button>
   <add-brewery-form v-if="isAddingBrewery" />
 </div>
 </template>
@@ -27,9 +27,7 @@ export default {
       pageLoaded: false,
       filter: {
         breweryName:""
-      },
-      // featuredURL: ''
-
+      }
     }
   },
 
@@ -48,6 +46,9 @@ export default {
     },
     featuredBreweryKey() {
       return this.$store.state.featuredKey;
+    },
+    isLoggedIn(){
+      return this.$store.state.token;
     }
   },
 
