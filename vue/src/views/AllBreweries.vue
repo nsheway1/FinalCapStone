@@ -18,7 +18,7 @@ import AddBreweryForm from '../components/addBreweryForm.vue';
 export default {
   name: 'all-breweries',
   props: ['id'],
-  components: { BreweryList, AddBreweryForm, FeaturedBrewery },
+  components: { BreweryList, AddBreweryForm,},
   data(){
     return{
       isAddingBrewery: false,
