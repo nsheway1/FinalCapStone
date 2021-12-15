@@ -50,4 +50,9 @@ public class BreweryController {
     public Brewery addNewBrewery(@RequestBody Brewery brewery) {
         return  breweryDAO.addNewBrewery((brewery));
     }
+
+    @RequestMapping(path = "/breweries/{id}", method = RequestMethod.PUT)
+    public void incrementVoteCount(@RequestBody Brewery brewery, @PathVariable Long id){
+        breweryDAO.incrementVoteCount(brewery);
+    }
 }

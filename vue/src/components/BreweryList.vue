@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import breweryService from '@/services/BreweryService'
 import breweryListItem from '@/components/BreweryListItem'
 
 
@@ -45,11 +44,7 @@ export default {
     },
 
 
-    created() {
-        breweryService.getBreweries().then( response => {
-            this.$store.commit("SET_BREWERIES", response.data);
-        })  
-    }
+
 }
 </script>
 
@@ -59,6 +54,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-around;
     flex-direction: row;
+    
 }
 
 .brewery {

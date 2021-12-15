@@ -5,6 +5,7 @@ import store from './store/index'
 import axios from 'axios'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Geocoder from "@pderas/vue2-geocoder"
+import VueCarousel from 'vue-carousel'
 
 Vue.config.productionTip = false
 
@@ -22,7 +23,9 @@ Vue.use(VueGoogleMaps, {
     key: 'AIzaSyBNA9LokvNMh6SfE9LQdZVGxwK-ndBmkms',
     libraries: 'places',
   }
-})
+});
+
+Vue.use(VueCarousel);
 
 new Vue({
   router,

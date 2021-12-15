@@ -11,6 +11,8 @@ public class Brewery {
     private String city;
     private String state;
     private String zipcode;
+    private int voteCount;
+    private int carouselCount;
 
     @Override
     public boolean equals(Object o) {
@@ -23,6 +25,22 @@ public class Brewery {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getName(), getDescription(), getStreetAddress(), getCity(), getState(), getZipcode());
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public int getCarouselCount() {
+        return carouselCount;
+    }
+
+    public void setCarouselCount(int carouselCount) {
+        this.carouselCount = carouselCount;
     }
 
     public Long getId() {
