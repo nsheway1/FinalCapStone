@@ -1,11 +1,9 @@
 <template>
-<!-- :draggable="draggable" @dragstart="dragStart" @dragover.stop>  -->
-<div class ="brewery-div" v-if="isLoaded" :id="id">  
+<div class ="brewery-div" :id="id">  
   <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
       <h1 class="brewery-list-title">{{brewery.name}}</h1>
-      <img :src="imageUrl" />
-      
+      <img :src="imageUrl" /> 
   </div>
   </router-link>
   <div class="social-parent">
@@ -27,7 +25,7 @@ import breweryService from '@/services/BreweryService.js'
 
 export default {
     name: 'brewery-list-item',
-    props: ['brewery', 'id', 'draggable'],
+    props: ['brewery', 'id', 'featuredURL'],
     data(){
       return{
         imageUrl: '',
@@ -41,26 +39,26 @@ export default {
       .then(response => {
         this.imageUrl = response.data;
       });
-      this.isLoaded = true;
+      // this.isLoaded = true;
     },
 
     methods: {
       updateBrewVotes(breweryToUpdate, breweryId) {
         breweryService.updateVoteCount(breweryToUpdate, breweryId);
         this.voteLocked = true;
-      }
+      //   axios.get('https://us-central1-brewery-finder-f943e.cloudfunctions.net/getImageUrl', { params: { name: this.brewery.name + '.jpg' }})
+      // .then(response => {
+      //  this.$store.commit("SET_FEATURED_URL", response.data);
+      // });
+        setTimeout(() => this.$store.commit("INCREMENT_VOTE_COUNT"), 500);
+      },
+      // determineURL(){
+      //   if(this.$store.state.featured.name && this.brewery.name == this.$store.state.featured.name){
+      //     return this.featuredURL;
+      //   }
+      //   return this.imageUrl;
+      // }
     }
-
-    // methods: {
-    //   dragStart: event => {
-    //     const target = event.target;
-    //     event.dataTransfer.setData('box_id', target.id);
-    //     setTimeout(() => {
-    //       target.style.display = "none";
-    //     })
-    //   }
-    // }
-
 }
 </script>
 

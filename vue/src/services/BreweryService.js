@@ -31,6 +31,10 @@ export default {
 
     updateVoteCount(brewery, breweryId) {
         return http.put(`/breweries/${breweryId}`, brewery)
+    },
+
+    getFeaturedBrewery(){
+        return http.get('/featured')
     }
 
 }

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <featured-brewery v-if="pageLoaded" v-bind:featuredBrewery="featured"/>
+  <featured-brew-box :key="featuredBreweryKey" v-if="pageLoaded" />
 <label class="brew-form-label" for="breweryNameFilter">Search</label>
    <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
   <div class="list">
@@ -14,13 +14,13 @@
 <script>
 import BreweryList from '@/components/BreweryList.vue'
 import AddBreweryForm from '../components/addBreweryForm.vue';
-import FeaturedBrewery from '../components/FeaturedBrewery.vue';
 import breweryService from '@/services/BreweryService'
+import FeaturedBrewBox from '../components/FeaturedBrewBox.vue';
+// import axios from 'axios'
 
 export default {
   name: 'all-breweries',
-  props: ['id'],
-  components: { BreweryList, AddBreweryForm, FeaturedBrewery},
+  components: { BreweryList, AddBreweryForm, FeaturedBrewBox},
   data(){
     return{
       isAddingBrewery: false,
@@ -28,6 +28,7 @@ export default {
       filter: {
         breweryName:""
       },
+      // featuredURL: ''
 
     }
   },
@@ -35,8 +36,8 @@ export default {
   computed: {
     featured() {
       let featuredBrewery;
-       this.$store.state.breweries.forEach(brewery => {
-          let x = 0;
+      let x = 0;
+      this.$store.state.breweries.forEach(brewery => {
          if (brewery.voteCount > x) {
            x = brewery.voteCount;
            featuredBrewery = brewery;
@@ -44,8 +45,10 @@ export default {
 
        });
         return featuredBrewery
-
-    } 
+    },
+    featuredBreweryKey() {
+      return this.$store.state.featuredKey;
+    }
   },
 
   beforeCreate() {
@@ -61,6 +64,13 @@ export default {
 
     this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
           this.pageLoaded = true;
+    // setTimeout(() => this.$store.commit("SET_FEATURED", this.featured), 500);
+    // let featURL;
+    // axios.get('https://us-central1-brewery-finder-f943e.cloudfunctions.net/getImageUrl', { params: { name: this.featured.name + '.jpg' }})
+    //   .then(response => {
+    //    featURL = response.data;
+    //   });
+    //   setTimeout(() => this.$store.commit("SET_FEATURED_URL", featURL), 500);
 
       //     setTimeout(() => 
       //     this.setFeatured(this.$store.state.breweries), 500
