@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+   
     <header id="nav">
-      <div id="site-logo">
+      <div id="site-logo">  
       <img class="gif" src="../src/img/beer.gif" />
       <router-link class="logo-link" v-bind:to="{ name: 'all-breweries'}">
       <h1 class="site-logo">Brew Hub</h1>
@@ -27,6 +28,7 @@
       </div>
       </div>
     </header>
+
     <router-view class="main" />
   </div>
 </template>
@@ -119,6 +121,7 @@ html {
   background: url("../src/img/background.jpg") no-repeat center center fixed;
   background-size: cover;
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Tangerine:wght@700&display=swap');
