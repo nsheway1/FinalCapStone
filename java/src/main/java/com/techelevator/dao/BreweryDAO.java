@@ -10,4 +10,5 @@ public interface BreweryDAO {
     public Brewery getBreweryById(Long id);
     public Brewery addNewBrewery(Brewery breweryToInsert);
     public void incrementVoteCount(Brewery breweryToUpdate);
+    public Brewery getFeaturedBrewery();
 }

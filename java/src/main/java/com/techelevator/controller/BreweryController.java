@@ -55,4 +55,9 @@ public class BreweryController {
     public void incrementVoteCount(@RequestBody Brewery brewery, @PathVariable Long id){
         breweryDAO.incrementVoteCount(brewery);
     }
+
+    @RequestMapping(path = "/featured", method = RequestMethod.GET)
+    public Brewery findFeaturedBrewery(){
+        return breweryDAO.getFeaturedBrewery();
+    }
 }

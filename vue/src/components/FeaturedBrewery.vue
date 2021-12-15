@@ -2,7 +2,7 @@
   <div class="featured">
       <h1>Featured Brewery</h1>
       <div class="feature-box">
-        <brewery-list-item class="feature-item" draggable="false" id="featured" v-bind:brewery="featuredBrewery" />
+        <brewery-list-item class="feature-item" id="featured" v-bind:brewery="featuredBrewery" />
         <p class="feature-info">
 
           "{{featuredBrewery.description}}"
@@ -24,6 +24,11 @@ props: ['featuredBrewery'],
 //   brewery(){
 //     const featuredBrewery = this.$store.state.featuredBrewery;
 //     return featuredBrewery;
+//   }
+// },
+// computed: {
+//   url(){
+//     return this.$store.state.featuredBrewURL;
 //   }
 // },
 created() {

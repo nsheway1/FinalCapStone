@@ -4,7 +4,7 @@
       <div id="site-logo">
       <img class="gif" src="../src/img/beer.gif" />
       <router-link class="logo-link" v-bind:to="{ name: 'all-breweries'}">
-      <h1 class="site-logo">Brewery Finder</h1>
+      <h1 class="site-logo">Brew Hub</h1>
       </router-link>
       </div>
       <h1 class="page-name">{{this.$store.state.currentPage}}</h1>
@@ -73,8 +73,12 @@ export default {
 }
 
 .site-logo{
-  font-family: 'Tangerine', cursive;
-  font-size: 3rem;
+  padding-left: 1rem;
+  margin-top: 0rem;
+  margin-bottom: .5rem;
+  
+  font-family: 'Bungee', cursive;
+  font-size: 2.4rem;
   transform: rotate(-15deg);
 }
 
@@ -105,7 +109,7 @@ html {
   background-size: cover;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Tangerine:wght@700&display=swap');
 
 </style>

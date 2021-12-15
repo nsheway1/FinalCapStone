@@ -27,6 +27,14 @@ export default {
 
     addNewBrewery(brewery){
         return http.post(`/breweries`,brewery)
+    },
+
+    updateVoteCount(brewery, breweryId) {
+        return http.put(`/breweries/${breweryId}`, brewery)
+    },
+
+    getFeaturedBrewery(){
+        return http.get('/featured')
     }
 
 }
