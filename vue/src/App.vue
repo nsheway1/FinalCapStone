@@ -9,11 +9,15 @@
       </div>
       <h1 class="page-name">{{this.$store.state.currentPage}}</h1>
       <div id="links">
-      <div class="link" @mouseover="hover=true" @mouseleave="hover=false">
+      <div v-if="!this.$store.state.token" class="link" @mouseover="hover=true" @mouseleave="hover=false">
         <router-link v-bind:to="{ name: 'login'}">
       <img v-if="!hover" class="tap" src="../src/img/tap.jpg" />
         <img v-else class="tap" src="../src/img/beerglass.jpg" />
       Login</router-link>
+        </div>
+        <div v-if="this.$store.state.token" class="link" @mouseover="hoverThree=true" @mouseleave="hoverThree=false">
+      <img v-if="!hoverThree" class="tap" src="../src/img/tap.jpg" />
+        <img @click="logout" v-else class="tap" src="../src/img/beerglass.jpg" />Logout
         </div>
         <div class="link" @mouseover="hoverTwo=true" @mouseleave="hoverTwo=false">
           <router-link  v-bind:to="{ name: 'all-breweries'}">
@@ -32,8 +36,14 @@ export default {
   data(){
     return{
       hover: false,
-      hoverTwo: false
+      hoverTwo: false,
+      hoverThree: false
     } 
+  },
+  methods: {
+    logout(){
+      this.$store.commit("LOGOUT");
+    }
   }
 }
 </script>
@@ -85,6 +95,7 @@ export default {
 .link{
   padding-right: 1rem;
   display: inline-block;
+  cursor: pointer;
 }
 
 .link:hover{

@@ -21,16 +21,18 @@
         </div>
         </div>
 
+        <div v-if="this.$store.state.token">
         <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
         <h1 class="insert-photo">Insert photo here</h1> 
         <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
         <p v-if="photoSelected">Photo Selected</p>
         <button class="upload-photo" @click="onUpload">Upload</button>
         <p v-if="uploadSuccess">Upload Successful!</p>
+        </div>
         
         <div class="table-box">
             <h1 class="beers-header">Beer List</h1>
-            <button @click="showForm=true" class="add-beer"> Add New Beer
+            <button v-if="this.$store.state.token" @click="showForm=true" class="add-beer"> Add New Beer
         </button>
         <add-beer-form v-if="showForm"/> 
         <table class="beer-list">
