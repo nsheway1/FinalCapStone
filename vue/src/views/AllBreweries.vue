@@ -1,6 +1,6 @@
 <template>
 <div>
-  <featured-brewery v-if="pageLoaded" v-bind:featuredBrewery="featuredBrewery"/>
+  <featured-brewery v-if="pageLoaded" v-bind:featuredBrewery="featured"/>
 <label class="brew-form-label" for="breweryNameFilter">Search</label>
    <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
   <div class="list">
@@ -28,8 +28,24 @@ export default {
       filter: {
         breweryName:""
       },
-      featuredBrewery: null
+
     }
+  },
+
+  computed: {
+    featured() {
+      let featuredBrewery;
+       this.$store.state.breweries.forEach(brewery => {
+          let x = 0;
+         if (brewery.voteCount > x) {
+           x = brewery.voteCount;
+           featuredBrewery = brewery;
+         }
+
+       });
+        return featuredBrewery
+
+    } 
   },
 
   beforeCreate() {
@@ -44,33 +60,28 @@ export default {
   created(){
 
     this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
+          this.pageLoaded = true;
 
-          setTimeout(() => 
-          this.setFeatured(this.$store.state.breweries), 500
-       )
+      //     setTimeout(() => 
+      //     this.setFeatured(this.$store.state.breweries), 500
+      //  )
    
-    
-
-  },
-
-  mounted() {
-
   },
 
 
-   methods: {
+  //  methods: {
 
-     setFeatured(breweryList) {
-       breweryList.forEach(brewery => {
-          let x = 0;
-         if (brewery.voteCount > x) {
-           x = brewery.voteCount;
-           this.featuredBrewery = brewery;
-         }
-       }) 
-       this.pageLoaded = true;
+  //    setFeatured(breweryList) {
+  //      breweryList.forEach(brewery => {
+  //         let x = 0;
+  //        if (brewery.voteCount > x) {
+  //          x = brewery.voteCount;
+  //          this.featuredBrewery = brewery;
+  //        }
+  //      }) 
+  //      this.pageLoaded = true;
      
-   } 
+  //  } 
   // methods: {
   //     drop: event => {
   //       const box_id = event.dataTransfer.getData('box_id');
@@ -82,7 +93,7 @@ export default {
 
 }
 
-}
+
 </script>
 
 <style>

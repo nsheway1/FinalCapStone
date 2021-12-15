@@ -11,7 +11,7 @@
   <div class="social-parent">
   <div class="social">
     <p class="like-text">Like {{this.brewery.name}} ?</p>
-  <img v-if="!voted" class="unliked" src="../img/singleBeerEmpty.jpg" @click="voted=true"/>
+  <img v-if="!voted && !voteLocked" class="unliked" src="../img/singleBeerEmpty.jpg" @click="voted=true; updateBrewVotes(brewery, brewery.id)"/>
   <img v-if="voted" class="liked" src="../img/twinBeersFull.jpg"/>
 
   </div>
@@ -19,8 +19,12 @@
 </div>  
 </template>
 
+
+
 <script>
 import axios from 'axios'
+import breweryService from '@/services/BreweryService.js'
+
 export default {
     name: 'brewery-list-item',
     props: ['brewery', 'id', 'draggable'],
@@ -28,7 +32,8 @@ export default {
       return{
         imageUrl: '',
         isLoaded: false,
-        voted: false
+        voted: false,
+        voteLocked: false
       }
     },
     created(){
@@ -38,6 +43,14 @@ export default {
       });
       this.isLoaded = true;
     },
+
+    methods: {
+      updateBrewVotes(breweryToUpdate, breweryId) {
+        breweryService.updateVoteCount(breweryToUpdate, breweryId);
+        this.voteLocked = true;
+      }
+    }
+
     // methods: {
     //   dragStart: event => {
     //     const target = event.target;
