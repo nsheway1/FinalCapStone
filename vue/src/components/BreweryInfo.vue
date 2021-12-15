@@ -6,14 +6,32 @@
       <p class="description">{{brewery.description}}</p>
      
       </div>
-     
       <div class="lower-box">
-          <div class="table-box">
-              <h1 class="beers-header">Beer List</h1>
-                      <button @click="showForm=true" class="add-beer"> Add New Beer
+        <div class="carousel">
+            <carousel>
+                <slide v-for="(image, i) in imageUrls" v-bind:key="i" >
+                    <img class="logo" :src="imageUrls[i]" /> 
+                </slide>
+            </carousel>
+        </div>
+
+        <div class="map-box">
+        <brewery-map v-if="mapReady" class="actual-map" v-bind:brewery="brewery" />
+         <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
+        </div>
+        </div>
+
+        <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
+        <h1 class="insert-photo">Insert photo here</h1> 
+        <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
+        <p v-if="photoSelected">Photo Selected</p>
+        <button class="upload-photo" @click="onUpload">Upload</button>
+        <p v-if="uploadSuccess">Upload Successful!</p>
         
+        <div class="table-box">
+            <h1 class="beers-header">Beer List</h1>
+            <button @click="showForm=true" class="add-beer"> Add New Beer
         </button>
-      
         <add-beer-form v-if="showForm"/> 
         <table class="beer-list">
         <tr>
@@ -31,18 +49,8 @@
             <td>{{beer.abv}}%</td>
         </tr>
         </table>
-        </div>
-        <div class="map-box">
-        <brewery-map v-if="mapReady" class="actual-map" v-bind:brewery="brewery" />
-         <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
-        </div>
-        </div>
-        <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
-        <h1 class="insert-photo">Insert photo here</h1> 
-        <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
-        <p v-if="photoSelected">Photo Selected</p>
-        <button class="upload-photo" @click="onUpload">Upload</button>
-        <p v-if="uploadSuccess">Upload Successful!</p>
+      </div>
+
       </div>
 </template>
 
@@ -52,8 +60,9 @@ import beerDetailBox from './beerDetailBox.vue';
 import AddBeerForm from './addBeerForm.vue';
 import BreweryMap from './breweryMap.vue';
 import axios from 'axios';
+import { Carousel, Slide } from 'vue-carousel'
 export default {
-  components: { beerDetailBox, AddBeerForm, BreweryMap },
+  components: { beerDetailBox, AddBeerForm, BreweryMap, Carousel, Slide },
 name: 'brewery-info',
 data(){
     return{
@@ -66,7 +75,9 @@ data(){
         uploadSuccess: false,
         imageUrl: '',
         isLoaded: false,
-        mapReady: false
+        mapReady: false,
+        imageUrls: [],
+        carouselURL: ''
     }
 },
 methods: {
@@ -99,6 +110,14 @@ breweryService.getBreweryInfo(this.$route.params.id).then(response => {
       .then(response => {
         this.imageUrl = response.data;
       });
+    for(let i = 1; i <= this.brewery.carouselCount; i++) {
+      axios.get('https://us-central1-brewery-finder-f943e.cloudfunctions.net/getImageUrl', { 
+          params: { name: this.brewery.name + ' Carousel-' + i + '.jpg' }})
+      .then(response => {
+        this.carouselURL = response.data;
+        this.imageUrls.push(this.carouselURL);
+      });
+    }  
 });
 breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     this.beers = response.data;
