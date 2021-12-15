@@ -1,6 +1,6 @@
 <template>
 <div>
-  <featured-brew-box :key="featuredBreweryKey" v-if="pageLoaded" />
+  <featured-brew-box :key="featuredBreweryKey" v-if="pageLoaded" class="feature-brew-box"/>
 <label class="brew-form-label" for="breweryNameFilter">Search</label>
    <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
   <div class="list">
@@ -111,6 +111,10 @@ export default {
 
 .list{
   padding-top: 1rem;
+}
+
+.feature-brew-box {
+  margin-left: 20rem;
 }
 
 </style>

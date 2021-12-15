@@ -1,7 +1,9 @@
 <template>
 <div class="mainlist"> 
      <div class="sidebar" >
-      text
+      <h3>Drag brewery here to add to itinerary!</h3>
+      <!-- create draggable element to put here -->
+      <button>Brew My Trip</button>
     </div>
   <div class="brewery-list">
       <brewery-list-item v-for="brewery in filteredList" 
@@ -68,11 +70,23 @@ export default {
 }
 .sidebar{
   position: fixed;
-  height: 50%;
-  background-color: coral;
+  height: 40rem;
   width:20rem;
   grid-area: sidebar;
-  margin-top: 0%;
+  margin-top: 13rem;
+  top: 0;
+  left: 0;
+
+  border: .1rem black solid;
+  border-radius: 1rem;
+  background-color:rgba(251, 170, 27, .5);
+  box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
+  rgba(251, 170, 27, .3) 10px 10px, 
+  rgba(251, 170, 27, .2) 15px 15px,
+  rgba(251, 170, 27, .1) 20px 20px,
+  rgba(251, 170, 27, .005) 25px 25px;
+
+
 
 }
 
