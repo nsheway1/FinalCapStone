@@ -1,11 +1,18 @@
 <template>
 <div>
   <featured-brew-box :key="featuredBreweryKey" v-if="pageLoaded" class="feature-brew-box"/>
-<label class="brew-form-label" for="breweryNameFilter">Search</label>
-   <input type="text" name="" id="breweryNameFilter" v-model="filter.breweryName" />
-  <div class="list">
-      <brewery-list v-bind:filter="filter" />
+<div class="search-area">
+  <img class="magnify-glass" src="../img/search.jpg" />
+  <div class="bar-label">
+    <label class="brew-form-label" for="breweryNameFilter"></label>
+    <input class="search-input" type="text" name="" 
+    id="breweryNameFilter" v-model="filter.breweryName" 
+    placeholder="Search for breweries" />
   </div>
+</div>
+<div class="list">
+      <brewery-list v-bind:filter="filter" />
+</div>
   <button v-if="isLoggedIn" @click="isAddingBrewery = true">Add Brewery</button>
   <add-brewery-form v-if="isAddingBrewery" />
 </div>
@@ -109,12 +116,34 @@ export default {
 
 <style>
 
+.search-area {
+  display: flex;
+  justify-content: center;
+}
+
+.magnify-glass {
+  margin-top: .7rem;
+  margin-right: .2rem;
+  height: 2.5rem;
+  color: wheat;
+}
+
+.search-input {
+  margin-top: 1rem;
+  height: 1.5rem;
+  border-radius: 5px;
+
+}
+
 .list{
   padding-top: 1rem;
 }
 
 .feature-brew-box {
   margin-left: 20rem;
+
+ 
+
 }
 
 </style>

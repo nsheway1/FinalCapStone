@@ -8,9 +8,11 @@
   </router-link>
   <div class="social-parent">
   <div class="social">
+    <!-- <div class="hvr-grow"> -->
     <p class="like-text">Like {{this.brewery.name}} ?</p>
   <img v-if="!voted && !voteLocked" class="unliked" src="../img/singleBeerEmpty.jpg" @click="voted=true; updateBrewVotes(brewery, brewery.id)"/>
   <img v-if="voted" class="liked" src="../img/twinBeersFull.jpg"/>
+  <!-- </div> -->
   </div>
   </div>
 </div>  
@@ -67,6 +69,7 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   
+  
 }
 
 .social {
@@ -75,16 +78,64 @@ export default {
   justify-content: center;
   max-width: 22rem;
   max-height: 3rem;
+  border: 3px solid rgb(141, 109, 3);
+  border-radius: 3px;
+  padding: 0rem .5rem 0rem .5rem; 
+  font-weight: 700;
+ 
+  
 }
+
 
 .unliked{
   
   height: 3rem;
   margin-top: 0rem;
+
 }
 
+@-webkit-keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.hvr-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+
+
 .unliked:hover {
-  background-color: teal;
+
   cursor: pointer;
 }
 

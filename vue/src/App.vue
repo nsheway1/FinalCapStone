@@ -122,6 +122,10 @@ html {
   background-size: cover;
 }
 
+.page-name {
+  font-family: 'Bungee', cursive;
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Tangerine:wght@700&display=swap');

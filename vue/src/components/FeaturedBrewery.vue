@@ -1,6 +1,6 @@
 <template>
   <div class="featured">
-      <h1>Featured Brewery</h1>
+      <h1 class="featured-header">Featured Brewery</h1>
       <div class="feature-box">
         <brewery-list-item class="feature-item" id="featured" v-bind:brewery="featuredBrewery" />
         <p class="feature-info">
@@ -41,6 +41,11 @@ created() {
 </script>
 
 <style>
+
+.featured-header {
+  padding-right: 10rem;
+  color: blue;
+}
 
 .feature-box {
   display: flex;

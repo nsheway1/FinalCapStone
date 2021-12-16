@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="feature-outline">
     <h1 class="featured-header">Featured Brewery</h1>
     <div class="feature-box">
         <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
@@ -44,6 +44,18 @@ created(){
 </script>
 
 <style>
+
+.feature-outline {
+        border: 10px solid rgba(251, 170, 27, .5);
+        border-style: solid;
+        margin-top: 3rem;
+}
+
+.featured-header {
+  padding-right: 15rem;
+  font-family: 'Bungee', cursive;
+
+}
 
 .feature-box {
   display: flex;
