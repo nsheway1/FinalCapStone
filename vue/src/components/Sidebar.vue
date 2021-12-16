@@ -103,6 +103,7 @@ ul li span {
 
 ul li:hover {
     color: black;
+    cursor: pointer;
 }
 
 ul li:hover span {

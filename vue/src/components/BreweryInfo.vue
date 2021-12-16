@@ -95,7 +95,7 @@ methods: {
     },
     onUpload(){
         const fd = new FormData();
-        fd.append('image', this.fileToUpload, this.fileToUpload.name);
+        fd.append('image', this.fileToUpload, this.brewery.name + ' Carousel-' + (this.brewery.carouselCount + 1) + '.jpg');
         axios.post('https://us-central1-brewery-finder-f943e.cloudfunctions.net/uploadImage', fd)
         .then(response => {
             console.log(response);

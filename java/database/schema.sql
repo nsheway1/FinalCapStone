@@ -48,7 +48,7 @@ CREATE TABLE beer(
 );
 
 INSERT INTO brewery VALUES (default, 'Seventh Son', 'Seventh Son Brewing has been producing exceptional beers at the intersection of 4th & 4th in Columbus’ historic Italian Village since April of 2013.',
-'1101 N. 4th St.', 'Columbus', 'Ohio', '43201', 0, 0);
+'1101 N. 4th St.', 'Columbus', 'Ohio', '43201', 0, 2);
 INSERT INTO brewery VALUES (default, 'Hoof-Hearted', 'Here at Hoof Hearted Brewing we have been turning tanks like cassette tapes since late 2011. Known throughout the industry for our deft hop-wrangling and nude air guitar prowess, we do everything we can to provide fresh, high-quality (and sometimes hi-test) liquid to help you get the party poppin',
 '850 N 4th St.', 'Columbus', 'Ohio', '43215', 0, 0);
 INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you needing more', '785 Science Blvd.', 'Gahanna', 'Ohio', '43230', 0, 0);
@@ -91,5 +91,3 @@ INSERT INTO beer VALUES (default, 'New World', 'IPA', 'Hops from three continent
 INSERT INTO beer VALUES (default, 'Shaka', 'IPA', 'Select hops from three separate continents provide an accentuated aroma of tropical fruit, while keeping bitterness, alcohol content, and malt base balanced.', 6.5, 6);
 
 COMMIT TRANSACTION;
-
-SELECT id, name, description, street_address, city, state, zipcode, vote_count, carousel_count FROM brewery WHERE brewery name = ?
