@@ -55,6 +55,7 @@ INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you 
 INSERT INTO brewery VALUES (default, 'Nostalgia', 'Beer that starts a conversation is the essence of Nostalgia Brewing', '81 Mill St', 'Gahanna', 'Ohio', '43230', 1, 0);
 INSERT INTO brewery VALUES (default, 'North High', 'Beer so good they named a street after us', '1288 N High St', 'Columbus', 'Ohio', '43201', 0, 4);
 INSERT INTO brewery VALUES (default, 'Endeavor', 'There is a story behind every beer', '909 W 5th Ave', 'Columbus', 'Ohio', '43212', 0, 0);
+INSERT INTO brewery VALUES (default, 'Lineage', 'Living a good life is like drinking a good beer. Experience it with all of your senses, enjoy every last drop, and share with friends.', '2971 N. High St.', 'Columbus', 'Ohio', '43202', 0, 0);
 
 INSERT INTO beer VALUES (default, 'Humulus Nimbus', 'Pale Ale', 'A pale golden ale that is both super crisp and super hop forward with a refreshing mouthfeel and a summer friendly 6% abv. Mosaic & simcoe hops lend tart blueberry and fragrant pine to a pleasingly bitter dandelion finish.',
 6.0, 1);
@@ -90,3 +91,5 @@ INSERT INTO beer VALUES (default, 'New World', 'IPA', 'Hops from three continent
 INSERT INTO beer VALUES (default, 'Shaka', 'IPA', 'Select hops from three separate continents provide an accentuated aroma of tropical fruit, while keeping bitterness, alcohol content, and malt base balanced.', 6.5, 6);
 
 COMMIT TRANSACTION;
+
+SELECT id, name, description, street_address, city, state, zipcode, vote_count, carousel_count FROM brewery WHERE brewery name = ?

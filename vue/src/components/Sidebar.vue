@@ -27,9 +27,11 @@ export default {
     setupItinerary(){
         breweryService.getItineraryList(this.breweryNames).then( response => {
             const tempArr = response.data;
-            let markers = [];
+            // let markers = [];
+            let addressObjArr = [];
             tempArr.forEach(brewery => {
                 let addressObj = {
+                    name: brewery.name,
                     address_line_1: brewery.streetAddress,
                     address_line_2: '',
                     city: brewery.city,
@@ -37,12 +39,13 @@ export default {
                     zip_code: brewery.zipcode,
                     country: 'United States'
                 };
-                this.$geocoder.send(addressObj, response => {
-                    let tempMarker = response.results[0].geometry.location;
-                    markers.push({position: tempMarker});
-                });
+                addressObjArr.push(addressObj);
+                // this.$geocoder.send(addressObj, response => {
+                //     let tempMarker = response.results[0].geometry.location;
+                //     markers.push({position: tempMarker});
+                // });
             });
-            setTimeout(() => this.$store.commit("GENERATE_ITINERARY", markers), 1500);
+            setTimeout(() => this.$store.commit("GENERATE_ITINERARY", addressObjArr), 1500);
             setTimeout(() => this.$router.push({name: 'itinerary-view'}), 1501);
         })
     }

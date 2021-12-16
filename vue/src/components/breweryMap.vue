@@ -64,15 +64,3 @@ export default {
 <style>
 
 </style>
-
-
-
-// let marker = {
-            //   lat: 0,
-            //   lng: 0
-            // };
-
-// const marker = {
-            //     lat: 39.9867941,
-            //     lng: -83.0022474,
-            // };
