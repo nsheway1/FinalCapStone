@@ -68,7 +68,6 @@ export default {
 
 <style>
 .vue-map-container {
-  margin-top: 2rem;
   height: 40rem;
   width: 50rem;
   border: 1rem solid rgb(236, 170, 55);
@@ -84,7 +83,8 @@ export default {
 }
 
 .selector-flex{
-  margin-top: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: space-around;
 }
