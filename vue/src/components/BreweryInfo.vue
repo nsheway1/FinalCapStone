@@ -4,8 +4,8 @@
       <div class="top-half">
       <img :src="imageUrl" class="logo" />
       <p class="description">{{brewery.description}}</p>
-     
       </div>
+
       <div class="lower-box">
         <div class="carousel">
             <carousel>
@@ -13,28 +13,29 @@
                     <img class="logo" :src="imageUrls[i]" /> 
                 </slide>
             </carousel>
+            <div class="photo-upload" v-if="this.$store.state.token">
+                <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
+                <!-- <h1 class="insert-photo">Insert photo here</h1>  -->
+                <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
+                <p v-if="photoSelected">Photo Selected</p>
+                <button class="upload-photo" @click="onUpload">Upload</button>
+                <p v-if="uploadSuccess">Upload Successful!</p>
+            </div>
         </div>
 
         <div class="map-box">
-        <brewery-map v-if="mapReady" class="actual-map" v-bind:brewery="brewery" />
-         <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
+            <brewery-map v-if="mapReady" class="actual-map" v-bind:brewery="brewery" />
+            <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
         </div>
         </div>
 
-        <div v-if="this.$store.state.token">
-        <input style="display: none" type="file" @change="onFileSelected" ref="imgInput">
-        <h1 class="insert-photo">Insert photo here</h1> 
-        <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
-        <p v-if="photoSelected">Photo Selected</p>
-        <button class="upload-photo" @click="onUpload">Upload</button>
-        <p v-if="uploadSuccess">Upload Successful!</p>
-        </div>
         
         <div class="table-box">
             <h1 class="beers-header">Beer List</h1>
+            <div class="table-button">
             <button v-if="this.$store.state.token" @click="showForm=true" class="add-beer"> Add New Beer
-        </button>
-        <add-beer-form v-if="showForm"/> 
+            </button>
+            <add-beer-form v-if="showForm"/> 
         <table class="beer-list">
         <tr>
             <th>Name</th>
@@ -51,6 +52,7 @@
             <td>{{beer.abv}}%</td>
         </tr>
         </table>
+        </div>
       </div>
 
       </div>
@@ -79,7 +81,7 @@ data(){
         isLoaded: false,
         mapReady: false,
         imageUrls: [],
-        carouselURL: ''
+        carouselURL: '',
     }
 },
 methods: {
@@ -134,12 +136,18 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 
 <style>
 
+
+.photo-upload {
+    margin-top: 1rem;
+}
+
 .spacer{
     padding: 3rem;
 }
 
 .whole-thing{
     background-color: rgba(214, 216, 218, .6);
+      padding-bottom: 3rem;
 }
 
 .top-half{
@@ -179,8 +187,27 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 
 .lower-box {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    flex-basis: 40%;
+    margin-top: 5rem;
     
+}
+
+.carousel {
+    width: 50rem;
+}
+
+.map-box {
+
+}
+
+.table-box {
+  
+}
+
+.table-button {
+    display: flex;
+    justify-content: center;
 }
 
 .actual-map {
@@ -216,12 +243,15 @@ p{
 }
 
  .add-beer {
+        height: 4rem;
         text-align: left;
-        padding: 20px 50px;
+        margin-top: 3.2rem;
         background: linear-gradient(1deg, rgba(0, 0, 0, 1), rgba(251, 170, 27, .8));
         color: white;
-        border: solid rgba(255,255,255,0) 1pt;
+        /* border: solid rgba(255,255,255,0) 1pt; */
+        border-radius: 5px;
         font-size: 1em;
+        margin-right: 1rem;
     }
     .add-beer:hover {
         background: rgba(251, 170, 27, .8);

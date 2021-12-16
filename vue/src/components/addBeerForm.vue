@@ -1,14 +1,14 @@
 <template>
   <form v-on:submit.prevent="submitForm">
       <label for="name">Name</label>
-      <input id="name" type="text" v-model="beer.name">
+      <input id="name" placeholder="" type="text" v-model="beer.name">
       <label for="type">Type</label>
       <input id="type" type="text" v-model="beer.type">
       <label for="description">Description</label>
       <input id="description" type="text" v-model="beer.description">
       <label for="ABV">ABV</label>
       <input id="ABV" type= "text" v-model="beer.abv" >
-      <button>submit</button>
+      <button class="submit-button">Submit</button>
   </form>
 </template>
 
@@ -42,6 +42,31 @@ methods:{
 <style>
  label{
      color: black;
+ }
+
+ form input {
+     margin-left: 1rem;
+     margin-right: 1rem;
+ }
+ form {
+     margin-top: 3rem;
+ }
+
+ .submit-button {
+        height: 4rem;
+        text-align: left;
+        background: linear-gradient(1deg, rgba(0, 0, 0, 1), rgba(251, 170, 27, .8));
+        color: white;
+        /* border: solid rgba(255,255,255,0) 1pt; */
+        border-radius: 5px;
+        font-size: 1em;
+        margin-right: 1rem;
+ }
+
+ .submit-button:hover {
+            background: rgba(251, 170, 27, .8);
+        color:black;
+        border: solid black 1pt;
  }
 
 </style>

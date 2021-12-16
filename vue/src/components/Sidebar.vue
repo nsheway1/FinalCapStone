@@ -1,7 +1,11 @@
 <template>
   <div class="sidebar" :id="id" @dragover.prevent @drop.prevent="drop" >
-      <h3>Drag brewery here to add to itinerary!</h3>
-      <button @click="setupItinerary">Brew My Trip</button>
+      <h3 class="itinerary-title">Drag brewery here to add to itinerary!</h3>
+      <ul>
+      <li @click="setupItinerary">Brew My Trip
+        <span></span><span></span><span></span><span></span>
+      </li>
+      </ul>
 </div>
 </template>
 
@@ -54,6 +58,72 @@ export default {
 </script>
 
 <style>
+
+.itinerary-title {
+  color: wheat;
+  font-family: sans-serif;
+  -webkit-text-stroke: 2px black;
+	-webkit-text-fill-color: wheat;
+  font-size: 2rem;
+}
+
+ul li {
+    --c: goldenrod;
+    color: var(--c);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+}
+
+ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+ul li:hover {
+    color: black;
+}
+
+ul li:hover span {
+    transform: translateY(0) scale(2);
+}
+
+ul li span:nth-child(1) {
+    --n: 1;
+}
+
+ul li span:nth-child(2) {
+    --n: 2;
+}
+
+ul li span:nth-child(3) {
+    --n: 3;
+}
+
+ul li span:nth-child(4) {
+    --n: 4;
+}
 
 .sidebar{
   position: fixed;
