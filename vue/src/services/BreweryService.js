@@ -35,6 +35,10 @@ export default {
 
     getFeaturedBrewery(){
         return http.get('/featured')
+    },
+
+    getItineraryList(breweryNames){
+        return http.get(`/itinerary/${breweryNames}`)
     }
 
 }

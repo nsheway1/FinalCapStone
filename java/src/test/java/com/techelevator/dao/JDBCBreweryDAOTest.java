@@ -100,6 +100,18 @@ public class JDBCBreweryDAOTest  extends DAOIntegrationTest{
 
     }
 
+    @Test
+    public void get_list_of_breweries_by_name_return_correct_breweries(){
+        List<Brewery> expectedResults = new ArrayList<Brewery>();
+        expectedResults.add(testBrewery);
+        expectedResults.add(testBreweryTwo);
+        String[] names = {testBrewery.getName(), testBreweryTwo.getName()};
+        List<Brewery> actualResults = jdbcBreweryDAO.getListOfBreweriesByName(names);
+
+        Assert.assertEquals(expectedResults, actualResults);
+
+    }
+
 
     private Brewery insertTestBrewery(Brewery breweryToInsert) {
         String sql = "INSERT INTO brewery VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";

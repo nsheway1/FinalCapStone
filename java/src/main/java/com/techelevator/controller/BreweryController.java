@@ -60,4 +60,9 @@ public class BreweryController {
     public Brewery findFeaturedBrewery(){
         return breweryDAO.getFeaturedBrewery();
     }
+
+    @RequestMapping(path = "/itinerary/{names}", method = RequestMethod.GET)
+    public List<Brewery> listBreweriesByName(@PathVariable String[] names){
+        return breweryDAO.getListOfBreweriesByName(names);
+    }
 }

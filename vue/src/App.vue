@@ -3,7 +3,7 @@
    
     <header id="nav">
       <div id="site-logo">  
-      <img class="gif" src="../src/img/beer.gif" />
+      <img id="beer" class="gif" src="../src/img/beer.gif" />
       <router-link class="logo-link" v-bind:to="{ name: 'all-breweries'}">
       <h1 class="site-logo">Brew Hub</h1>
       </router-link>

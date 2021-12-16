@@ -66,6 +66,20 @@ public class JDBCBreweryDAO implements BreweryDAO{
         return brewery;
     }
 
+    public List<Brewery> getListOfBreweriesByName(String[] breweryNames){
+        List<Brewery> breweries = new ArrayList<Brewery>();
+        String sql = "SELECT id, name, description, street_address, city, state, zipcode, " +
+                "vote_count, carousel_count FROM brewery WHERE name = ?";
+        for(String name : breweryNames){
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
+            while(results.next()){
+                Brewery brewery = mapRowToBrewery(results);
+                breweries.add(brewery);
+            }
+        }
+        return breweries;
+    }
+
     private Brewery mapRowToBrewery(SqlRowSet results) {
         Brewery brewery = new Brewery();
         brewery.setId(results.getLong("id"));

@@ -26,7 +26,8 @@ export default new Vuex.Store({
     breweriesLoaded: false,
     featuredKey: 0,
     featuredBrewURL: '',
-    featured: null
+    featured: null,
+    itinerary: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -59,6 +60,9 @@ export default new Vuex.Store({
     },
     SET_FEATURED_URL(state, url){
       state.featuredBrewURL = url;
+    },
+    GENERATE_ITINERARY(state, itinerary){
+      state.itinerary = itinerary;
     }
   }
 })

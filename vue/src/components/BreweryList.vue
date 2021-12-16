@@ -1,28 +1,23 @@
 <template>
-<div class="mainlist"> 
-     <div class="sidebar" >
-      <h3>Drag brewery here to add to itinerary!</h3>
-      <!-- create draggable element to put here -->
-      <button>Brew My Trip</button>
-    </div>
+<div class="mainlist">
+    <sidebar id="itinerary"></sidebar> 
   <div class="brewery-list">
       <brewery-list-item v-for="brewery in filteredList" 
       v-bind:key="brewery.id" class="brewery" 
-      v-bind:brewery="brewery"/>
+      v-bind:brewery="brewery" :id="brewery.name" draggable="true" />
   </div>
 </div>
 </template>
 
 <script>
 import breweryListItem from '@/components/BreweryListItem'
+import Sidebar from './Sidebar.vue';
 
 
 export default {
     name: 'brewery-list',
     components: {
-        breweryListItem,
-
-    },
+        breweryListItem, Sidebar},
 
    props: ['filter'],
     
@@ -68,33 +63,12 @@ export default {
      flex-basis: 29%;
        
 }
-.sidebar{
-  position: fixed;
-  height: 40rem;
-  width:20rem;
-  grid-area: sidebar;
-  margin-top: 13rem;
-  top: 0;
-  left: 0;
-
-  border: .1rem black solid;
-  border-radius: 1rem;
-  background-color:rgba(251, 170, 27, .5);
-  box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
-  rgba(251, 170, 27, .3) 10px 10px, 
-  rgba(251, 170, 27, .2) 15px 15px,
-  rgba(251, 170, 27, .1) 20px 20px,
-  rgba(251, 170, 27, .005) 25px 25px;
-
-
-
-}
 
 .mainlist{
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-areas: 
-    "sidebar list";
+    ". list";
 }
 
 

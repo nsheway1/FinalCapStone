@@ -11,4 +11,5 @@ public interface BreweryDAO {
     public Brewery addNewBrewery(Brewery breweryToInsert);
     public void incrementVoteCount(Brewery breweryToUpdate);
     public Brewery getFeaturedBrewery();
+    public List<Brewery> getListOfBreweriesByName(String[] breweryNames);
 }
