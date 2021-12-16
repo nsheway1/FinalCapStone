@@ -3,7 +3,7 @@
   <router-link class="brewery-link" v-bind:to="{ name: 'brewery-details', params: {id: brewery.id}}">
   <div class="brewerybox">
       <h1 class="brewery-list-title">{{brewery.name}}</h1>
-      <img :src="imageUrl" /> 
+      <img draggable="false" :src="imageUrl" /> 
   </div>
   </router-link>
   <div class="social-parent">
