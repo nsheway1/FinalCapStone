@@ -1,8 +1,8 @@
 <template>
   <div>
-      <h1 class="location" v-for="location in locations" :key="location">
-          {{location}}
-      </h1>
+      <h1>Welcome to your Brewery Tour Itinerary!</h1>
+      <h2>Here is the optimal route for your trip based on the breweries you've selected:</h2>
+      
   </div>
 </template>
 
