@@ -8,14 +8,14 @@
       </option>
     </select>
     <b>End:</b>
-    <select v-model="end">
+    <select @change="waypointCalc" v-model="end">
       <option v-for="brewery in this.$store.state.itinerary" :key="brewery" 
       :value="brewery.address_line_1 + ', ' + brewery.city + ', ' + brewery.state">
       {{brewery.name}}
       </option>
     </select>
     <GmapMap :zoom="11" :center="{ lat: 39.96, lng: -82.9988 }">
-      <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destination"/>
+      <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destination" :waypoints="waypoints" />
     </GmapMap>
   </div>
 </template>
@@ -30,7 +30,8 @@ export default {
 
   data: () => ({
     start: "",
-    end: ""
+    end: "",
+    waypoints: []
   }),
 
   computed: {
@@ -41,6 +42,19 @@ export default {
     destination() {
       if (!this.end) return null;
       return { query: this.end };
+    },
+  },
+
+  methods: {
+    waypointCalc(){
+      this.$store.state.itinerary.forEach(brewStop => {
+        let point = {
+          location: brewStop.address_line_1 + ', ' + brewStop.city + ', ' + brewStop.state
+        }
+        if(point.location != this.start && point.location != this.end){
+          this.waypoints.push(point);
+        } 
+      })
     }
   }
 };
