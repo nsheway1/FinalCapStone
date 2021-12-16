@@ -215,6 +215,7 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 }
 
 .beer-list{
+    margin-right: 2rem;
     table-layout: fixed;
     width: 50rem;
     border: .1rem solid #d6d8da;
@@ -252,6 +253,7 @@ p{
         border-radius: 5px;
         font-size: 1em;
         margin-right: 1rem;
+        margin-left: 2rem;
     }
     .add-beer:hover {
         background: rgba(251, 170, 27, .8);
