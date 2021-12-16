@@ -1,19 +1,25 @@
 <template>
   <div>
-    <b>Start:</b>
-    <select v-model="start">
+    <div class="selector-flex">
+      <div>
+    <b class="selector-label">Start:</b>
+    <select class="selector" v-model="start">
       <option v-for="brewery in this.$store.state.itinerary" :key="brewery" 
       :value="brewery.address_line_1 + ', ' + brewery.city + ', ' + brewery.state">
       {{brewery.name}}
       </option>
     </select>
-    <b>End:</b>
-    <select @change="waypointCalc" v-model="end">
+    </div>
+    <div>
+    <b class="selector-label">End:</b>
+    <select class="selector"  @change="waypointCalc" v-model="end">
       <option v-for="brewery in this.$store.state.itinerary" :key="brewery" 
       :value="brewery.address_line_1 + ', ' + brewery.city + ', ' + brewery.state">
       {{brewery.name}}
       </option>
     </select>
+    </div>
+    </div>
     <GmapMap :zoom="11" :center="{ lat: 39.96, lng: -82.9988 }">
       <DirectionsRenderer travelMode="DRIVING" :origin="origin" :destination="destination" :waypoints="waypoints" />
     </GmapMap>
@@ -62,6 +68,25 @@ export default {
 
 <style>
 .vue-map-container {
-  height: 300px;
+  margin-top: 2rem;
+  height: 40rem;
+  width: 50rem;
+  border: 1rem solid rgb(236, 170, 55);
 }
+
+.selector{
+  padding-right: 5rem;
+  font-size: 2rem;
+}
+
+.selector-label{
+  font-size: 2rem;
+}
+
+.selector-flex{
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-around;
+}
+
 </style>
