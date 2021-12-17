@@ -98,6 +98,7 @@ export default {
         });
         this.photoSelected = false;
         this.uploadSuccess = true;
+        this.showPhotoUploader = false;
         this.showLogoUploader = true;
     },
     onUploadLogo(){
@@ -125,7 +126,6 @@ export default {
 }
 
 .brew-upload-status-text{
-  background-color: black;
   color: #d6d8da;
 }
 
