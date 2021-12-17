@@ -29,7 +29,7 @@
         </div>
         
         <div class="table-box">
-            <h1 class="beers-header">Beer List</h1>
+            <h1 class="beers-header">Top Beer Picks</h1>
             <div class="table-button">
             <button v-if="this.$store.state.token" @click="showForm=true" class="add-beer"> Add New Beer
             </button>
