@@ -33,7 +33,6 @@
             <div class="table-button">
             <button v-if="this.$store.state.token" @click="showForm=true" class="add-beer"> Add New Beer
             </button>
-            <add-beer-form v-if="showForm"/> 
         <table class="beer-list">
         <tr>
             <th>Name</th>
@@ -53,6 +52,7 @@
         </div>
       </div>
       </div>
+      <add-beer-form v-if="showForm"/> 
 
       </div>
 </template>

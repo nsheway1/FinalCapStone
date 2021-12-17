@@ -1,13 +1,21 @@
 <template>
-  <form v-on:submit.prevent="submitForm">
+  <form class="flex-form" v-on:submit.prevent="submitForm">
+      <div class="label-8">
       <label for="name">Name</label>
       <input id="name" placeholder="" type="text" v-model="beer.name">
+      </div>
+      <div class="label-9">
       <label for="type">Type</label>
       <input id="type" type="text" v-model="beer.type">
+      </div>
+      <div class="label-10">
       <label for="description">Description</label>
       <input id="description" type="text" v-model="beer.description">
+      </div>
+      <div class="label-11">
       <label for="ABV">ABV</label>
       <input id="ABV" type= "text" v-model="beer.abv" >
+      </div>
       <button class="submit-button">Submit</button>
   </form>
 </template>
@@ -61,6 +69,8 @@ methods:{
         border-radius: 5px;
         font-size: 1em;
         margin-right: 1rem;
+        text-align: center;
+        
  }
 
  .submit-button:hover {

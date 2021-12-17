@@ -13,8 +13,8 @@
 <div class="list">
       <brewery-list v-bind:filter="filter" />
 </div>
-  <button v-if="isLoggedIn" @click="isAddingBrewery = true">Add Brewery</button>
-  <add-brewery-form v-if="isAddingBrewery" />
+<add-brewery-form class="add-brew-form" v-if="isAddingBrewery" />
+  <button class="add" v-if="isLoggedIn" @click="isAddingBrewery = true">Add Brewery</button>
 </div>
 </template>
 
@@ -23,7 +23,6 @@ import BreweryList from '@/components/BreweryList.vue'
 import AddBreweryForm from '../components/addBreweryForm.vue';
 import breweryService from '@/services/BreweryService'
 import FeaturedBrewBox from '../components/FeaturedBrewBox.vue';
-// import axios from 'axios'
 
 export default {
   name: 'all-breweries',
@@ -64,53 +63,14 @@ export default {
             this.$store.commit("SET_BREWERIES", response.data);
          
         })
-
-
   },
 
   created(){
 
     this.$store.commit("SET_CURRENT_PAGE", 'Explore Columbus Beer');
           this.pageLoaded = true;
-    // setTimeout(() => this.$store.commit("SET_FEATURED", this.featured), 500);
-    // let featURL;
-    // axios.get('https://us-central1-brewery-finder-f943e.cloudfunctions.net/getImageUrl', { params: { name: this.featured.name + '.jpg' }})
-    //   .then(response => {
-    //    featURL = response.data;
-    //   });
-    //   setTimeout(() => this.$store.commit("SET_FEATURED_URL", featURL), 500);
-
-      //     setTimeout(() => 
-      //     this.setFeatured(this.$store.state.breweries), 500
-      //  )
-   
   },
-
-
-  //  methods: {
-
-  //    setFeatured(breweryList) {
-  //      breweryList.forEach(brewery => {
-  //         let x = 0;
-  //        if (brewery.voteCount > x) {
-  //          x = brewery.voteCount;
-  //          this.featuredBrewery = brewery;
-  //        }
-  //      }) 
-  //      this.pageLoaded = true;
-     
-  //  } 
-  // methods: {
-  //     drop: event => {
-  //       const box_id = event.dataTransfer.getData('box_id');
-  //       const box = document.getElementById(box_id);
-  //       box.style.display = "block";
-  //       event.target.appendChild(box);
-  //     }
-  //   }
-
 }
-
 
 </script>
 
@@ -141,9 +101,18 @@ export default {
 
 .feature-brew-box {
   margin-left: 20rem;
+}
 
- 
+.add{
+  height: 4rem;
+  width: 10rem;
+  border-radius: 5px;
+  color: white;
+  background: linear-gradient(1deg, rgba(0, 0, 0, 1), rgba(251, 170, 27, .8));
+}
 
+.add-brew-form{
+  margin-left: 20%;
 }
 
 </style>

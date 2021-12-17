@@ -1,19 +1,31 @@
 <template>
 <div>
-  <form v-if="showForm" v-on:submit.prevent="submitForm">
+  <form class="flex-form" v-if="showForm" v-on:submit.prevent="submitForm">
+      <div class="label-1">
       <label class="brew-form-label" for="name">Name</label>
       <input id="name" type="text" v-model="brewery.name">
+      </div>
+      <div class="label-2">
       <label class="brew-form-label" for="description">Description</label>
       <input id="description" type="text" v-model="brewery.description">
+      </div>
+      <div class="label-3">
       <label class="brew-form-label" for="street address">Street Address</label>
       <input id="street address" type= "text" v-model="brewery.streetAddress" >
+      </div>
+      <div class="label-4">
       <label class="brew-form-label" for="city">City</label>
       <input id="city" type="text" v-model="brewery.city">
+      </div>
+      <div class="label-5">
       <label class="brew-form-label" for="state">State</label>
       <input id="state" type="text" v-model="brewery.state">
+      </div>
+      <div class="label-6">
       <label class="brew-form-label" for="zipcode">Zipcode</label>
       <input id="zipcode" type="text" v-model="brewery.zipcode">
-      <button>submit</button>
+      </div>
+      <button class="label-7">Submit</button>
   </form>
       
       <div v-if="showPhotoUploader">
@@ -109,13 +121,58 @@ export default {
 <style>
 
 .brew-form-label{
-  background-color: black;
-  color: #d6d8da;
+  color: black;
 }
 
 .brew-upload-status-text{
   background-color: black;
   color: #d6d8da;
 }
+
+.flex-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+  "one two three"
+  "four five six"
+  "seven seven seven";
+  border: .1rem solid black;
+  background-color: rgba(251, 170, 27, .8);
+  text-align: center;
+}
+
+.label-1{
+  grid-area: one;
+}
+
+.label-2{
+  grid-area: two;
+}
+
+.label-3{
+  grid-area: three;
+}
+
+.label-4{
+  grid-area: four;
+}
+
+.label-5{
+  grid-area: five;
+}
+
+.label-6{
+  grid-area: six;
+}
+
+.label-7{
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
+  width: 25%;
+  grid-area: seven;
+}
+
 
 </style>

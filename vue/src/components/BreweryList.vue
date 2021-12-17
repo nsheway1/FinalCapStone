@@ -58,10 +58,8 @@ export default {
 }
 
 .brewery {
-    
     font-size: 20px;
      flex-basis: 29%;
-       
 }
 
 .mainlist{

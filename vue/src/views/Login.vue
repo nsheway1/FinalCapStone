@@ -31,7 +31,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link class="need" :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -74,3 +74,21 @@ export default {
   }
 };
 </script>
+<style>
+.text-center{
+  margin-top: 1rem;
+  border: .1rem solid black;
+  color: black;
+  background-color:rgba(251, 170, 27, .7);
+  box-shadow: rgba(251, 170, 27, .5) 5px 5px, 
+  rgba(251, 170, 27, .3) 10px 10px, 
+  rgba(251, 170, 27, .2) 15px 15px,
+  rgba(251, 170, 27, .1) 20px 20px,
+  rgba(251, 170, 27, .005) 25px 25px;
+}
+
+.need{
+  font-weight: bolder;
+  color: rgb(12, 104, 39)
+}
+</style>
