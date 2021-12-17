@@ -188,6 +188,7 @@ export default {
 }
 
 .brewery-list-title{
+  font-size: 2.3rem;
   background-color: rgb(0, 0, 0, .6);
   font-weight: normal;
 }

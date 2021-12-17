@@ -2,7 +2,7 @@
   <div v-if="loaded"> 
          <GmapMap 
   :center='center'
-  :zoom="15"
+  :zoom="17"
   map-type-id="terrain"
   style="width: 100%; height: 25rem;"
 >

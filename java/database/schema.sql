@@ -49,13 +49,20 @@ CREATE TABLE beer(
 
 INSERT INTO brewery VALUES (default, 'Seventh Son', 'Seventh Son Brewing has been producing exceptional beers at the intersection of 4th & 4th in Columbus’ historic Italian Village since April of 2013.',
 '1101 N. 4th St.', 'Columbus', 'Ohio', '43201', 0, 2);
-INSERT INTO brewery VALUES (default, 'Hoof-Hearted', 'Here at Hoof Hearted Brewing we have been turning tanks like cassette tapes since late 2011. Known throughout the industry for our deft hop-wrangling and nude air guitar prowess, we do everything we can to provide fresh, high-quality (and sometimes hi-test) liquid to help you get the party poppin',
+INSERT INTO brewery VALUES (default, 'Hoof-Hearted', 'Here at Hoof Hearted Brewing we have been turning tanks like cassette tapes since late 2011. Known throughout the industry for our deft hop-wrangling and nude air guitar prowess, we do everything we can to provide fresh, high-quality (and sometimes hi-test) liquid to help you get the party poppin.',
 '850 N 4th St.', 'Columbus', 'Ohio', '43215', 0, 0);
-INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you needing more', '785 Science Blvd.', 'Gahanna', 'Ohio', '43230', 0, 0);
-INSERT INTO brewery VALUES (default, 'Nostalgia', 'Beer that starts a conversation is the essence of Nostalgia Brewing', '81 Mill St', 'Gahanna', 'Ohio', '43230', 1, 0);
-INSERT INTO brewery VALUES (default, 'North High', 'Beer so good they named a street after us', '1288 N High St', 'Columbus', 'Ohio', '43201', 0, 4);
-INSERT INTO brewery VALUES (default, 'Endeavor', 'There is a story behind every beer', '909 W 5th Ave', 'Columbus', 'Ohio', '43212', 0, 0);
+INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you needing more.', '785 Science Blvd.', 'Gahanna', 'Ohio', '43230', 0, 0);
+INSERT INTO brewery VALUES (default, 'Nostalgia', 'Beer that starts a conversation is the essence of Nostalgia Brewing.', '81 Mill St', 'Gahanna', 'Ohio', '43230', 1, 0);
+INSERT INTO brewery VALUES (default, 'North High', 'Beer so good they named a street after us.', '1288 N High St', 'Columbus', 'Ohio', '43201', 0, 4);
+INSERT INTO brewery VALUES (default, 'Endeavor', 'There is a story behind every beer.', '909 W 5th Ave', 'Columbus', 'Ohio', '43212', 0, 0);
 INSERT INTO brewery VALUES (default, 'Lineage', 'Living a good life is like drinking a good beer. Experience it with all of your senses, enjoy every last drop, and share with friends.', '2971 N. High St.', 'Columbus', 'Ohio', '43202', 0, 0);
+INSERT INTO brewery VALUES (default, 'Zaftig Brew Pub', 'Zaftig specializes in high gravity, full bodied beers.', '119 E 5th Ave', 'Columbus', 'Ohio', '43201', 0, 0);
+INSERT INTO brewery VALUES (default, 'Land Grant', 'A production craft brewery located in a renovated ex-elevator factory in the historic East Franklinton neighborhood of Columbus, Land-Grant brews a variety of traditional and modern beer styles.', '424 W. Town Street',
+'Columbus', 'Ohio', '43215', 0, 0);
+INSERT INTO brewery VALUES (default, 'Wolf''s Ridge', 'Passionately Executed. Family owned and proudly self-distributing, we want to pioneer the future of craft in Columbus.', '215 N. 4th Street', 'Columbus', 'Ohio', '43215', 2, 0);
+INSERT INTO brewery VALUES (default, 'BrewDog', 'Born in Scotland. Made in Ohio. Our taproom features a premier craft beer restaurant, a dog-friendly expansive patio with a Dog Park, and a Gaming Room.',
+'96 Gender Rd.', 'Canal Winchester', 'Ohio', '43110', 1, 0);
+INSERT INTO brewery VALUES (default, 'Columbus Brewing', 'Columbus Brewing Company is an independent craft brewery dedicated to exploring the flavors of American hops.', '2555 Harrison Rd.', 'Columbus', 'Ohio', '43204', 0, 0);
 
 INSERT INTO beer VALUES (default, 'Humulus Nimbus', 'Pale Ale', 'A pale golden ale that is both super crisp and super hop forward with a refreshing mouthfeel and a summer friendly 6% abv. Mosaic & simcoe hops lend tart blueberry and fragrant pine to a pleasingly bitter dandelion finish.',
 6.0, 1);

@@ -6,11 +6,10 @@
       <p class="description">{{brewery.description}}</p>
       </div>
 
-      <div class="lower-box">
         <div class="carousel">
             <carousel>
                 <slide v-for="(image, i) in imageUrls" v-bind:key="i" >
-                    <img class="logo" :src="imageUrls[i]" /> 
+                    <img class="carousel-photo" :src="imageUrls[i]" /> 
                 </slide>
             </carousel>
             <div class="photo-upload" v-if="this.$store.state.token">
@@ -23,12 +22,11 @@
             </div>
         </div>
 
+    <div class="lower-box">
         <div class="map-box">
             <brewery-map v-if="mapReady" class="actual-map" v-bind:brewery="brewery" />
             <p class="address">Address: {{brewery.streetAddress}}, {{brewery.city}}, {{brewery.state}}, {{brewery.zipcode}}</p>
         </div>
-        </div>
-
         
         <div class="table-box">
             <h1 class="beers-header">Beer List</h1>
@@ -53,6 +51,7 @@
         </tr>
         </table>
         </div>
+      </div>
       </div>
 
       </div>
@@ -168,8 +167,15 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     grid-area: logo;
 }
 
+.carousel-photo{
+    border: .2rem solid black;
+    border-radius: 1rem;
+    height: 20rem;
+}
+
 .description{
     grid-area: descr;
+    padding-top: 1rem;
 }
 
 .address{
@@ -187,18 +193,16 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 
 .lower-box {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-basis: 40%;
     margin-top: 5rem;
-    
 }
 
 .carousel {
-    width: 50rem;
+    width: 100%;
 }
 
 .map-box {
-
 }
 
 .table-box {
@@ -215,7 +219,6 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 }
 
 .beer-list{
-    margin-right: 2rem;
     table-layout: fixed;
     width: 50rem;
     border: .1rem solid #d6d8da;

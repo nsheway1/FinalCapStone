@@ -8,11 +8,10 @@
                 <img :src="imageUrl" />
             </div>
         </router-link>
-        <p class="feature-info">
-            "{{brewery.description}}"
-            
-            
-            Upvote your favorite breweries to get them featured
+        <p class="feature-info">"{{brewery.description}}""
+        <br>
+        <br>
+            Upvote your favorite breweries to get them featured!
         </p>
     </div>
 </div>
