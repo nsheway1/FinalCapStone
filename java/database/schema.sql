@@ -48,7 +48,7 @@ CREATE TABLE beer(
 );
 
 INSERT INTO brewery VALUES (default, 'Seventh Son', 'Seventh Son Brewing has been producing exceptional beers at the intersection of 4th & 4th in Columbus’ historic Italian Village since April of 2013.',
-'1101 N. 4th St.', 'Columbus', 'Ohio', '43201', 0, 2);
+'1101 N. 4th St.', 'Columbus', 'Ohio', '43201', 0, 3);
 INSERT INTO brewery VALUES (default, 'Hoof-Hearted', 'Here at Hoof Hearted Brewing we have been turning tanks like cassette tapes since late 2011. Known throughout the industry for our deft hop-wrangling and nude air guitar prowess, we do everything we can to provide fresh, high-quality (and sometimes hi-test) liquid to help you get the party poppin.',
 '850 N 4th St.', 'Columbus', 'Ohio', '43215', 0, 0);
 INSERT INTO brewery VALUES (default, 'Edison', 'Fresh brews that will leave you needing more.', '785 Science Blvd.', 'Gahanna', 'Ohio', '43230', 0, 0);
@@ -74,8 +74,6 @@ INSERT INTO beer VALUES (default, 'Belloq', 'Stout', 'Stout with coffee and vani
 INSERT INTO beer VALUES (default, 'Key Bump', 'Triple IPA', 'Have you any idea what the street value of this mountain is? Clean off your mirrored glass table and grab a hundo. Key Bump bout to pack your nose full of those oh-so tropical tones. Passionfruit, guava, pineapples, calamansi and kumquat barrel down the mountain as quick as Alberto Tomba on an Olympic qualifying run. Hopped with the most dangerous weapon in the game (ElMoMoCoe) + fermented w/ the fruity flyboi Orenthal, Key Bump''s the pick-me-up you can''t put down. To quote the great Clyde Von Damme,
 "What the hell is Dim Mak?"', 10.5, 2);
 INSERT INTO beer VALUES (default, 'Discount Nachos', 'IPA', 'Double Dry-Hopped IPA', 7.3, 2);
-
-
 INSERT INTO beer VALUES (default, 'Nikola', 'Vienna Lager', 'This is a Vienna Lager that has moderate malt sweetness. It has a malt character from Vienna and other colored malts. Balanced with a subtle hop and caramel flavor and aroma. Clean, moderately dry finish.',
 5.3, 3);
 INSERT INTO beer VALUES (default, 'All Mina', 'Pale Ale', '?
@@ -84,17 +82,25 @@ A British-Style Pale Ale with a malty middle and light hop aroma and moderate ho
 INSERT INTO beer VALUES (default, 'Gus', 'Porter', '
 A classic British style porter with black and brown malt flavor and aroma. Rich body with blanched dry finish.',
 5.3, 3);
-
-
 INSERT INTO beer VALUES (default, 'Thackery', 'pumpkin', 'Nothing says fall quite like pumpkins and beer', 5.0, 4);
 INSERT INTO beer VALUES (default, 'Marty Mc-Fly-PA', 'IPA', 'It doesn''t take 1.21 Gigawatts to taste this delicious New England-style IPA!', 7.0, 4);
 INSERT INTO beer VALUES (default, 'Glass Joe', 'IPA', 'You won''t need a Power Glove to attack this East Coast IPA, but it definitely packs a hoppy punch!', 6.0, 4);
 INSERT INTO beer VALUES (default, 'Honey Wheat', 'Honey - US',' Honey Wheat is an American wheat ale with 30 pounds of honey added to the brew. Honey Wheat is lightly hopped, slightly sweet, and has a clean finish.', 6.0, 5);
 INSERT INTO beer VALUES (default, 'Rise IPA', 'IPA', 'Aggressively hopped and assertively bitter, this crisp, malty India Pale Ale showcases a wonderful bouquet of citrusy and floral aromas.', 6.8, 5);
 INSERT INTO beer VALUES (default, 'Filth McNasty', 'Imperial Stout', 'A Russian Imperial Stout with an intensely concentrated roasted malt character. Aggressively hopped to give it a resinous and herbal undertone.', 9.0, 5);
-
 INSERT INTO beer VALUES (default, 'Holy Ground', 'Export Stout', 'A bigger version of a typical dry Irish stout. This beer is forward with rich, roasted malts. Our’s is nitrogenated for a silky body', 6.0,6);
 INSERT INTO beer VALUES (default, 'New World', 'IPA', 'Hops from three continents with hints of guava, key lime and tropical fruit', 5.5, 6);
 INSERT INTO beer VALUES (default, 'Shaka', 'IPA', 'Select hops from three separate continents provide an accentuated aroma of tropical fruit, while keeping bitterness, alcohol content, and malt base balanced.', 6.5, 6);
+INSERT INTO beer VALUES (default, 'Spaceship No. 6', 'IPA', 'American IPA', 7.2, 7);
+INSERT INTO beer VALUES (default, 'Oscura Obscura', 'Blonde Stout', 'Nitro Blonde Stout', 7.9, 7);
+INSERT INTO beer VALUES (default, 'Midnight Sickle', 'Stout', 'Russian Imperial Stout', 10.4, 7);
+INSERT INTO beer VALUES (default, 'Monochromatic Moonmist', 'IPA', 'Hazy IPA', 7.0, 7);
+INSERT INTO beer VALUES (default, 'Tropical Bernice', 'Berliner Weisse', 'Mango Papaya Berliner Weisse', 4.2, 7);
+INSERT INTO beer VALUES (default, 'Mini Bomb Blonde', 'Blonde Ale', 'This spunky little offering proves blondes DO have more fun. Light cereal malts and citrus are the star of this party that go on all night and day.',
+5.0, 8);
+INSERT INTO beer VALUES (default, 'Hazy Miss Daisy', 'IPA', 'New England IPA', 7.0, 8);
+INSERT INTO beer VALUES (default, 'Hop Swapper', 'IPA', 'Double IPA', 10.0, 8);
+INSERT INTO beer VALUES (default, 'Too Cans', 'IPA', 'Imperial IPA', 13.0, 8);
+INSERT INTO beer VALUES (default, 'Heavy Hearted Amber', 'Amber Ale', 'Amber Ale', 8.0, 8);
 
 COMMIT TRANSACTION;

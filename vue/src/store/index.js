@@ -27,7 +27,8 @@ export default new Vuex.Store({
     featuredKey: 0,
     featuredBrewURL: '',
     featured: null,
-    itinerary: []
+    itinerary: [],
+    carouselKey: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -57,6 +58,9 @@ export default new Vuex.Store({
     },
     INCREMENT_VOTE_COUNT(state){
       state.featuredKey++;
+    },
+    INCREMENT_CAROUSEL_COUNT(state){
+      state.carouselKey++;
     },
     SET_FEATURED_URL(state, url){
       state.featuredBrewURL = url;

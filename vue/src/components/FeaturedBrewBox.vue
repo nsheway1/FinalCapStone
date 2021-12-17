@@ -8,7 +8,7 @@
                 <img :src="imageUrl" />
             </div>
         </router-link>
-        <p class="feature-info">"{{brewery.description}}""
+        <p class="feature-info">"{{brewery.description}}"
         <br>
         <br>
             Upvote your favorite breweries to get them featured!
@@ -38,7 +38,7 @@ created(){
       .then(response => {
         this.imageUrl = response.data;
       }), 500);
-    this.infoRetrieved = true;
+    setTimeout(() => this.infoRetrieved = true, 501);
 }
 
 }

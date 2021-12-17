@@ -70,7 +70,7 @@ export default {
 
   created(){
 
-    this.$store.commit("SET_CURRENT_PAGE", 'Browse Breweries');
+    this.$store.commit("SET_CURRENT_PAGE", 'Explore Columbus Beer');
           this.pageLoaded = true;
     // setTimeout(() => this.$store.commit("SET_FEATURED", this.featured), 500);
     // let featURL;

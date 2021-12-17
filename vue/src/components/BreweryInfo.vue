@@ -3,11 +3,11 @@
       <div class="spacer"></div>
       <div class="top-half">
       <img :src="imageUrl" class="logo" />
-      <p class="description">{{brewery.description}}</p>
+      <p class="description">"{{brewery.description}}"</p>
       </div>
 
         <div class="carousel">
-            <carousel>
+            <carousel :key="currentCarouselKey">
                 <slide v-for="(image, i) in imageUrls" v-bind:key="i" >
                     <img class="carousel-photo" :src="imageUrls[i]" /> 
                 </slide>
@@ -17,7 +17,7 @@
                 <!-- <h1 class="insert-photo">Insert photo here</h1>  -->
                 <button class="select-photo" @click="$refs.imgInput.click()">Select Photo</button>
                 <p v-if="photoSelected">Photo Selected</p>
-                <button class="upload-photo" @click="onUpload">Upload</button>
+                <button class="upload-photo" @click="onUpload(brewery, brewery.id)">Upload</button>
                 <p v-if="uploadSuccess">Upload Successful!</p>
             </div>
         </div>
@@ -80,7 +80,12 @@ data(){
         isLoaded: false,
         mapReady: false,
         imageUrls: [],
-        carouselURL: '',
+        carouselURL: ''
+    }
+},
+computed: {
+    currentCarouselKey(){
+        return this.$store.state.carouselKey;
     }
 },
 methods: {
@@ -92,15 +97,17 @@ methods: {
         this.photoSelected = true;
         this.uploadSuccess = false;
     },
-    onUpload(){
+    onUpload(brewery, breweryId){
         const fd = new FormData();
-        fd.append('image', this.fileToUpload, this.brewery.name + ' Carousel-' + (this.brewery.carouselCount + 1) + '.jpg');
+        fd.append('image', this.fileToUpload, brewery.name + ' Carousel-' + (brewery.carouselCount + 1) + '.jpg');
         axios.post('https://us-central1-brewery-finder-f943e.cloudfunctions.net/uploadImage', fd)
         .then(response => {
             console.log(response);
         });
-        this.photoSelected = false;
+        breweryService.updateCarouselCount(brewery, breweryId);
+        this.photoSelected = true;
         this.uploadSuccess = true;
+        setTimeout(() => document.location.reload(true), 1000);
     }
 },
 
@@ -134,7 +141,6 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 </script>
 
 <style>
-
 
 .photo-upload {
     margin-top: 1rem;
@@ -186,9 +192,6 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
     color: black;
     font-size: 2.5rem;
     font-weight: normal;
-    /* width: 50%; */
-    /* margin-left: auto;
-    margin-right: auto; */
 }
 
 .lower-box {
@@ -200,13 +203,6 @@ breweryService.getBeersByBreweryId(this.$route.params.id).then(response =>{
 
 .carousel {
     width: 100%;
-}
-
-.map-box {
-}
-
-.table-box {
-  
 }
 
 .table-button {

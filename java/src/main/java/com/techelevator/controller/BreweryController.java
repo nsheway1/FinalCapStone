@@ -56,6 +56,11 @@ public class BreweryController {
         breweryDAO.incrementVoteCount(brewery);
     }
 
+    @RequestMapping(path = "/breweries/{id}/uploadImage", method = RequestMethod.PUT)
+    public void incrementCarouselCount(@RequestBody Brewery brewery, @PathVariable Long id){
+        breweryDAO.incrementCarouselCount(brewery);
+    }
+
     @RequestMapping(path = "/featured", method = RequestMethod.GET)
     public Brewery findFeaturedBrewery(){
         return breweryDAO.getFeaturedBrewery();

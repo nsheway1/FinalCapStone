@@ -33,6 +33,10 @@ export default {
         return http.put(`/breweries/${breweryId}`, brewery)
     },
 
+    updateCarouselCount(brewery, breweryId){
+        return http.put(`/breweries/${breweryId}/uploadImage`, brewery)
+    },
+
     getFeaturedBrewery(){
         return http.get('/featured')
     },

@@ -55,6 +55,11 @@ public class JDBCBreweryDAO implements BreweryDAO{
         jdbcTemplate.update(sql, breweryToUpdate.getVoteCount() + 1, breweryToUpdate.getId());
     }
 
+    public void incrementCarouselCount(Brewery breweryToUpdate){
+        String sql = "UPDATE brewery SET carousel_count = ? WHERE id = ?";
+        jdbcTemplate.update(sql, breweryToUpdate.getCarouselCount() + 1, breweryToUpdate.getId());
+    }
+
     public Brewery getFeaturedBrewery(){
         Brewery brewery = new Brewery();
         String sql = "SELECT id, name, description, street_address, city, state, zipcode, vote_count, " +
